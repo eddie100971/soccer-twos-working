@@ -44,10 +44,10 @@ class MAPPOTrainer:
     def reset_env(self):
         self.env.reset()
         states, rewards, done, info = self.env.step({
-                0: self.env.action_space.sample(),
-                1: self.env.action_space.sample(),
-                2: self.env.action_space.sample(),
-                3: self.env.action_space.sample()})
+                0: [0,0,0],
+                1: [0,0,0],
+                2: [0,0,0],
+                3: [0,0,0]})
         
         states = [v for k,v in states.items()]
         rewards = [v for k,v in rewards.items()]
@@ -68,9 +68,10 @@ class MAPPOTrainer:
                 episode has finished.
             env_info: BrainInfo object with current environment data.
         """
-
+        # Construct the actions
+        actions_to_take = {i:actions[i] if i < 2 else [0,0,0] for i in range(4)}
         # From environment information, extract states and rewards.
-        obs, rewards, done, info = self.env.step({i:actions[i] for i in range(4)})
+        obs, rewards, done, info = self.env.step(actions_to_take)
 
         states = [v for k,v in obs.items()]
         rewards = [v for k,v in rewards.items()]
@@ -107,6 +108,7 @@ class MAPPOTrainer:
                 processed_states.append(processed_state)
                 log_probs.append(log_prob)
                 actions.append(action)
+
 
             # Convert action tensors to integer values.
             raw_actions = np.array(

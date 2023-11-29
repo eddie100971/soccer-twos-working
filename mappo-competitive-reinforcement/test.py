@@ -47,7 +47,7 @@ env = soccer_twos.make(env_channel=env_channel, render=True)
 obs, reward, done, info = env.reset()
 print("Initial Observation Space")
 print(reward)
-
+print(obs)
 env_channel.set_parameters(
     ball_state={
         "position": [1, -1],
@@ -61,12 +61,15 @@ env_channel.set_parameters(
         }
     }
 )
+actions = {i:[1,1,1] if i < 2 else [0,0,0] for i in range(4)}
+print(actions)
+'''
 obs, reward, done, info = env.step({
-    0: env.action_space.sample(),
-    1: env.action_space.sample(),             
-    2: env.action_space.sample(),
-    3: env.action_space.sample(),
+    0: [0,0,0],
+    1: [0,0,0],             
+    2: [0,0,0],
+    3: [0,0,0],
 })
-
+'''
 print("Initial Observation Space")
-print(done)
+print(obs)
