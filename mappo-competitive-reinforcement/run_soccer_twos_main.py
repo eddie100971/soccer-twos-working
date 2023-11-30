@@ -214,50 +214,50 @@ def train_agents(env, trainer, n_episodes=3000, target_score=0.5,
         '''
     trainer.save()
 
-    def train_agents_sp(env, trainer, n_episodes=10, target_score=0.5,
-                 score_window_size=100, epochs = 10):
-        """
-        This function carries out the training process with specified trainer.
+def train_agents_sp(env, trainer, n_episodes=10, target_score=0.5,
+                score_window_size=100, epochs = 10):
+    """
+    This function carries out the training process with specified trainer.
 
-        Arguments:
-            env: A UnityEnvironment used for Agent evaluation and training.
-            trainer: A MAPPOTrainer object used to train agents in environment.
-            n_episodes: An integer for maximum number of training episodes.
-            target_score: An float max mean target score to be achieved over
-                the last score_window_size episodes.
-            score_window_size: The integer number of past episode scores
-                utilized in order to calculate the current mean scores.
-        """
+    Arguments:
+        env: A UnityEnvironment used for Agent evaluation and training.
+        trainer: A MAPPOTrainer object used to train agents in environment.
+        n_episodes: An integer for maximum number of training episodes.
+        target_score: An float max mean target score to be achieved over
+            the last score_window_size episodes.
+        score_window_size: The integer number of past episode scores
+            utilized in order to calculate the current mean scores.
+    """
 
-        # Train the agent for n_episodes.
-        for epoch in range(epochs):
-            for i_episode in range(1, n_episodes + 1):
+    # Train the agent for n_episodes.
+    for epoch in range(epochs):
+        for i_episode in range(1, n_episodes + 1):
 
-                # Step through the training process.
-                trainer.step()
-                
+            # Step through the training process.
+            trainer.step()
+            
+            trainer.print_status()
+            
+            # Print status of training every 100 episodes.
+            if i_episode % 100 == 0:
+                scores = np.max(trainer.score_history, axis=1).tolist()
                 trainer.print_status()
-                
-                # Print status of training every 100 episodes.
-                if i_episode % 100 == 0:
-                    scores = np.max(trainer.score_history, axis=1).tolist()
-                    trainer.print_status()
 
-                # If target achieved, print and plot reward statistics.
-                '''
-                mean_reward = np.max(
-                    trainer.score_history[-score_window_size:], axis=1
-                ).mean()
-                if mean_reward >= target_score:
-                    print('Environment is solved.')
-                    env.close()
-                    trainer.print_status()
-                    trainer.plot()
-                    trainer.save()
-                    break
-                '''
-            trainer.save()
-            trainer.opponents = [trainer.opponents.child(f"actor_agent_{o}_episode_{epoch}.pth") for o in (2,3)]
+            # If target achieved, print and plot reward statistics.
+            '''
+            mean_reward = np.max(
+                trainer.score_history[-score_window_size:], axis=1
+            ).mean()
+            if mean_reward >= target_score:
+                print('Environment is solved.')
+                env.close()
+                trainer.print_status()
+                trainer.plot()
+                trainer.save()
+                break
+            '''
+        trainer.save()
+        trainer.opponents = [trainer.opponents.child(f"actor_agent_{o}_episode_{epoch}.pth") for o in (2,3)]
             
 
 
@@ -275,4 +275,4 @@ if __name__ == '__main__':
     trainer = create_trainer(env, agents, save_dir)
 
     # Train agent in specified environment.
-    train_agents(env, trainer)
+    train_agents_sp(env, trainer)

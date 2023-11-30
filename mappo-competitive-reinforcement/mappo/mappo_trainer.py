@@ -5,7 +5,7 @@ import torch
 import time
 import os
 
-from ppo_model import Opponent
+from .ppo_model import Opponent
 
 plt.style.use('dark_background')
 
