@@ -29,7 +29,7 @@ def load_env(env_loc):
     """
 
     # Initialize unity environment, return message if error thrown.
-    env = soccer_twos.make(render=True, termination_mode="ALL")
+    env = soccer_twos.make(render=False, termination_mode="ALL")
 
     # Extract state dimensionality from env.
     state_size = env.observation_space.shape[0]
@@ -161,7 +161,7 @@ def create_trainer(env, agents, save_dir, update_frequency=5000,
     return trainer
 
 
-def train_agents(env, trainer, n_episodes=10, target_score=0.5,
+def train_agents(env, trainer, n_episodes=3000, target_score=0.5,
                  score_window_size=100):
     """
     This function carries out the training process with specified trainer.

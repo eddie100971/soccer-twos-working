@@ -51,7 +51,7 @@ class MAPPOTrainer:
         
         states = [v for k,v in states.items()]
         rewards = [v for k,v in rewards.items()]
-        done = [done['__all__'] for i in range(4)]
+        done = done['__all__']
         return states, rewards, done, info
     
     def step_env(self, actions):
@@ -93,7 +93,7 @@ class MAPPOTrainer:
         scores = []
 
         # Restart the environment and gather original states.
-        states, rewards, done, _ = self.reset_env()
+        states, rewards, dones, _ = self.reset_env()
         episode_start = 0
         # Act and evaluate results and networks for each timestep.
         for t in range(self.max_episode_length):
@@ -153,6 +153,7 @@ class MAPPOTrainer:
                 # print(",")
                 # print(t)
                 # print(states)
+        self.reset_env()
                 
                 
             
