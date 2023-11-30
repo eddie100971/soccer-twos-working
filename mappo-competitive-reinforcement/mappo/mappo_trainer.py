@@ -75,7 +75,7 @@ class MAPPOTrainer:
 
         states = [v for k,v in obs.items()]
         rewards = [v for k,v in rewards.items()]
-        done = [done['__all__'] for i in range(4)]
+        done = done['__all__']
         # Evaluate if episode has finished.
         return states, rewards, done, info
 
@@ -116,12 +116,14 @@ class MAPPOTrainer:
             )
 
             # Realize sampled actions in environment and evaluate new state.
-            states, rewards, done, _ = self.step_env(raw_actions)
-
+            states, rewards, dones, _ = self.step_env(raw_actions)
+            goal = dones
+            dones = [self.timestep==500] * 4
+            
             # Add experience to the memories for each agent.
             for agent, state, action, log_prob, reward, done in \
                     zip(self.agents, processed_states, actions, log_probs,
-                        rewards, done):
+                        rewards, dones):
                 agent.add_memory(state, action, log_prob, reward, done)
 
             # Initiate learning for agent if update frequency is observed.
@@ -134,8 +136,8 @@ class MAPPOTrainer:
 
             # End episode if desired score is achieved.
             
-            if done:
-                break
+            if goal:
+                self.reset_env()
             
 
         return scores

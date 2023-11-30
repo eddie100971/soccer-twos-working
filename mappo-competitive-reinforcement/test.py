@@ -43,33 +43,43 @@ import soccer_twos
 from soccer_twos.side_channels import EnvConfigurationChannel
 env_channel = EnvConfigurationChannel()
 env = soccer_twos.make(env_channel=env_channel, render=True)
-
-obs, reward, done, info = env.reset()
-print("Initial Observation Space")
-print(reward)
-print(obs)
+env.reset()
 env_channel.set_parameters(
     ball_state={
-        "position": [1, -1],
-        "velocity": [-1.2, 3],
+        "position": [0, 0],
+        "velocity": [100, 0]
     },
-    players_states={
-        3: {
-            "position": [-5, 10],
-            "rotation_y": 45,
-            "velocity": [5, 0],
+    
+    players_states = {
+        1: {
+            "position": [0, 0],
+            "rotation_y": 0,
+            "velocity": [0, 0],
         }
     }
 )
-actions = {i:[1,1,1] if i < 2 else [0,0,0] for i in range(4)}
-print(actions)
+for i in range(20):
+    obs, reward, done, info = env.step({
+        0: [0,0,0],
+        1: [0,0,0],             
+        2: [0,0,0],
+        3: [0,0,0],
+    })
+    print(reward)
+
 '''
-obs, reward, done, info = env.step({
-    0: [0,0,0],
-    1: [0,0,0],             
-    2: [0,0,0],
-    3: [0,0,0],
-})
+#testing rewards
+for i in range(10):
+    obs, reward, done, info = env.step({
+        0: env.action_space.sample(),
+        1: env.action_space.sample(),             
+        2: env.action_space.sample(),
+        3: env.action_space.sample(),
+    })
+    print(reward)
+'''
+
 '''
 print("Initial Observation Space")
 print(obs)
+'''
