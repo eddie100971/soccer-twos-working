@@ -359,17 +359,19 @@ class MultiAgentUnityWrapper(UnityToGymWrapper):
         Args:
             terminal_steps (list): list of all the steps that terminated.
         """
-        return (
-            (self.termination_mode == TerminationMode.ANY and len(terminal_steps) > 0)
-            or (
-                self.termination_mode == TerminationMode.MAJORITY
-                and len(terminal_steps) > 0.5 * self.num_groups
-            )
-            or (
-                self.termination_mode == TerminationMode.ALL
-                and len(terminal_steps) == self.num_groups
-            )
-        )
+        print(terminal_steps)
+        # return (
+        #     (self.termination_mode == TerminationMode.ANY and len(terminal_steps) > 0)
+        #     or (
+        #         self.termination_mode == TerminationMode.MAJORITY
+        #         and len(terminal_steps) > 0.5 * self.num_groups
+        #     )
+        #     or (
+        #         self.termination_mode == TerminationMode.ALL
+        #         and len(terminal_steps) == self.num_groups
+        #     )
+        # )
+        return False
 
 
 class MultiagentTeamWrapper(gym.core.Wrapper):
@@ -419,7 +421,8 @@ class MultiagentTeamWrapper(gym.core.Wrapper):
         return (
             self._preprocess_obs(obs),
             self._preprocess_reward(reward),
-            done,
+            # done,
+            False,
             self._preprocess_info(info),
         )
 

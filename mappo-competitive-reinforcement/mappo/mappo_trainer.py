@@ -69,7 +69,8 @@ class MAPPOTrainer:
             env_info: BrainInfo object with current environment data.
         """
         # Construct the actions
-        actions_to_take = {i:actions[i] if i < 2 else [0,0,0] for i in range(4)}
+        # actions_to_take = {i:actions[i] if i < 2 else [0,0,0] for i in range(4)}
+        actions_to_take = {i: [0,0,0] for i in range(4)}
         # From environment information, extract states and rewards.
         obs, rewards, done, info = self.env.step(actions_to_take)
 
@@ -116,7 +117,7 @@ class MAPPOTrainer:
             )
 
             # Realize sampled actions in environment and evaluate new state.
-            states, rewards, dones, _ = self.step_env(raw_actions)
+            states, rewards, dones, info = self.step_env(raw_actions)
             goal = dones
             dones = [self.timestep==500] * 4
             
@@ -137,9 +138,15 @@ class MAPPOTrainer:
             # End episode if desired score is achieved.
             
             if goal:
+                print("goal scored")
+                # print(",")
+                # print(t)
+                print(self.timestep)
+                # print(states)
                 self.reset_env()
+                self.timestep = 0
             
-
+        print("episode done")
         return scores
 
     def step(self):

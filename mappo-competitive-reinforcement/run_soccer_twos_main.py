@@ -29,7 +29,7 @@ def load_env(env_loc):
     """
 
     # Initialize unity environment, return message if error thrown.
-    env = soccer_twos.make(render=True)
+    env = soccer_twos.make(render=True, termination_mode="ALL")
 
     # Extract state dimensionality from env.
     state_size = env.observation_space.shape[0]
@@ -48,7 +48,7 @@ def load_env(env_loc):
 def create_agent(state_size, action_size, actor_fc1_units=512,
                  actor_fc2_units=256, actor_lr=1e-4, critic_fc1_units=512,
                  critic_fc2_units=256, critic_lr=1e-4, gamma=0.99,
-                 num_updates=10, max_eps_length=500, eps_clip=0.3,
+                 num_updates=10, max_eps_length=1500, eps_clip=0.3,
                  critic_loss=0.5, entropy_bonus=0.01, batch_size=256):
     """
     This function creates an agent with specified parameters for training.
@@ -129,7 +129,7 @@ def create_agent(state_size, action_size, actor_fc1_units=512,
 
 
 def create_trainer(env, agents, save_dir, update_frequency=5000,
-                   max_eps_length=500, score_window_size=100):
+                   max_eps_length=1500, score_window_size=100):
     """
     Initializes trainer to train agents in specified environment.
 
