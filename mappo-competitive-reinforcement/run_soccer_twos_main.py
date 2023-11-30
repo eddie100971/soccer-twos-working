@@ -182,6 +182,8 @@ def train_agents(env, trainer, n_episodes=10, target_score=0.5,
         # Step through the training process.
         trainer.step()
         
+        trainer.print_status()
+        
         # Print status of training every 100 episodes.
         if i_episode % 100 == 0:
             scores = np.max(trainer.score_history, axis=1).tolist()

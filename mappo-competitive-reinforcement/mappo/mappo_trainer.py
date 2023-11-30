@@ -69,8 +69,8 @@ class MAPPOTrainer:
             env_info: BrainInfo object with current environment data.
         """
         # Construct the actions
-        # actions_to_take = {i:actions[i] if i < 2 else [0,0,0] for i in range(4)}
-        actions_to_take = {i: [0,0,0] for i in range(4)}
+        actions_to_take = {i:actions[i] if i < 2 else [0,0,0] for i in range(4)}
+        #actions_to_take = {i: [0,0,0] for i in range(4)}
         # From environment information, extract states and rewards.
         obs, rewards, done, info = self.env.step(actions_to_take)
 
@@ -94,11 +94,11 @@ class MAPPOTrainer:
 
         # Restart the environment and gather original states.
         states, rewards, done, _ = self.reset_env()
-
+        episode_start = 0
         # Act and evaluate results and networks for each timestep.
         for t in range(self.max_episode_length):
             self.timestep += 1
-
+            episode_start += 1
             # Sample actions for each agent while keeping track of states,
             # actions and log probabilities.
             processed_states, actions, log_probs = [], [], []
@@ -118,14 +118,13 @@ class MAPPOTrainer:
 
             # Realize sampled actions in environment and evaluate new state.
             states, rewards, dones, info = self.step_env(raw_actions)
-            goal = dones
-            dones = [self.timestep==500] * 4
+            times = [self.timestep==500] * 4
             
             # Add experience to the memories for each agent.
-            for agent, state, action, log_prob, reward, done in \
+            for agent, state, action, log_prob, reward, time_ep in \
                     zip(self.agents, processed_states, actions, log_probs,
-                        rewards, dones):
-                agent.add_memory(state, action, log_prob, reward, done)
+                        rewards, times):
+                agent.add_memory(state, action, log_prob, reward, time_ep)
 
             # Initiate learning for agent if update frequency is observed.
             if self.timestep % self.update_frequency == 0:
@@ -137,16 +136,27 @@ class MAPPOTrainer:
 
             # End episode if desired score is achieved.
             
-            if goal:
-                print("goal scored")
+            if dones:
+                #print(info)
+                goal_check = False
+                for i in rewards:
+                    if i == -1.0:
+                        goal_check = True
+            
+                if goal_check:
+                    print("Goal Scored!, Reset Env")
+                '''
+                else:
+                    print("Times up!, Reset Env")
+                '''
+                self.reset_env()
                 # print(",")
                 # print(t)
-                print(self.timestep)
                 # print(states)
-                self.reset_env()
-                self.timestep = 0
+                
+                
             
-        print("episode done")
+        #print("Episode Ending")
         return scores
 
     def step(self):

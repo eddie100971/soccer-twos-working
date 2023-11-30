@@ -65,7 +65,9 @@ for i in range(20):
         2: [0,0,0],
         3: [0,0,0],
     })
-    print(reward)
+    if done:
+        print(reward)
+        env.reset()
 
 '''
 #testing rewards
