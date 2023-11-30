@@ -48,7 +48,7 @@ def load_env(env_loc):
 def create_opponent(state_size, action_size, actor_fc1_units=512,
                  actor_fc2_units=256, agent_ix=None, epoch=None):
     if epoch is not None:
-        path = os.join(os.cwd, "saved_files", f"actor_agent_{agent_ix}_episode_{epoch}.pth") 
+        path = os.path.join(os.cwd, "saved_files", f"actor_agent_{agent_ix}_episode_{epoch}.pth") 
     else:
         path = None
     
@@ -171,7 +171,7 @@ def create_trainer(env, agents, save_dir, update_frequency=5000,
     return trainer
 
 
-def train_agents(env, trainer, n_episodes=3000, target_score=0.5,
+def train_agents(env, trainer, n_episodes=2, target_score=0.5,
                  score_window_size=100):
     """
     This function carries out the training process with specified trainer.
@@ -214,8 +214,8 @@ def train_agents(env, trainer, n_episodes=3000, target_score=0.5,
         '''
     trainer.save()
 
-def train_agents_sp(env, trainer, n_episodes=10, target_score=0.5,
-                score_window_size=100, epochs = 10):
+def train_agents_sp(env, trainer, n_episodes=2, target_score=0.5,
+                score_window_size=100, epochs = 3):
     """
     This function carries out the training process with specified trainer.
 
@@ -257,7 +257,9 @@ def train_agents_sp(env, trainer, n_episodes=10, target_score=0.5,
                 break
             '''
         trainer.save()
-        trainer.opponents = [trainer.opponents.child(f"actor_agent_{o}_episode_{epoch}.pth") for o in (2,3)]
+        trainer.opponents = [trainer.opponents[o].child(os.path.join("saved_files", f"actor_agent_{o}_episode_{(epoch + 1)*n_episodes}.pth")) for o in (0,1)]
+        print(f'{epoch + 1} / {epochs} epochs done')
+
             
 
 

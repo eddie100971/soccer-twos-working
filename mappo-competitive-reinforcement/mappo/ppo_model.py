@@ -23,7 +23,7 @@ def hidden_init(layer):
     return -lim, lim
 
 class Opponent:
-    def __init__(self, state_size, action_size, fc1_units, fc2_units, weights_path=None):
+    def __init__(self, state_size=336, action_size=3, fc1_units=512, fc2_units=256, weights_path=None):
         self.actor = ActorNet(state_size, action_size, fc1_units, fc2_units)
         
         if weights_path is not None:
@@ -38,9 +38,9 @@ class Opponent:
 
     def get_actions(self, state):
         if self.path_empty:
-            return [0,0,0]
+            return torch.tensor([0,0,0])
         else:
-            action_mu, action_sigma = self.actor(state)
+            action_mu, action_sigma = self.actor(torch.tensor(state))
             sigma = action_sigma.expand_as(action_mu)
             dist = Normal(action_mu, sigma)
             # Sample action value from generated distribution.
@@ -49,7 +49,7 @@ class Opponent:
         return action
     
     def child(self, path):
-        return Opponent(self.state_size, self.action_size, self.fc1_units, self.fc2units, path)
+        return Opponent(self.state_size, self.action_size, self.fc1_units, self.fc2_units, path)
 
 
     
