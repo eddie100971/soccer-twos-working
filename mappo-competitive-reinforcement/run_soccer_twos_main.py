@@ -161,7 +161,7 @@ def create_trainer(env, agents, save_dir, update_frequency=5000,
     return trainer
 
 
-def train_agents(env, trainer, n_episodes=3000, target_score=0.5,
+def train_agents(env, trainer, n_episodes=10, target_score=0.5,
                  score_window_size=100):
     """
     This function carries out the training process with specified trainer.
@@ -190,6 +190,7 @@ def train_agents(env, trainer, n_episodes=3000, target_score=0.5,
             trainer.print_status()
 
         # If target achieved, print and plot reward statistics.
+        '''
         mean_reward = np.max(
             trainer.score_history[-score_window_size:], axis=1
         ).mean()
@@ -200,6 +201,8 @@ def train_agents(env, trainer, n_episodes=3000, target_score=0.5,
             trainer.plot()
             trainer.save()
             break
+        '''
+    trainer.save()
 
 
 if __name__ == '__main__':

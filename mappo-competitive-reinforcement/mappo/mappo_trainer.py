@@ -94,11 +94,10 @@ class MAPPOTrainer:
 
         # Restart the environment and gather original states.
         states, rewards, dones, _ = self.reset_env()
-        episode_start = 0
+        
         # Act and evaluate results and networks for each timestep.
         for t in range(self.max_episode_length):
             self.timestep += 1
-            episode_start += 1
             # Sample actions for each agent while keeping track of states,
             # actions and log probabilities.
             processed_states, actions, log_probs = [], [], []
@@ -110,21 +109,36 @@ class MAPPOTrainer:
                 log_probs.append(log_prob)
                 actions.append(action)
 
-
             # Convert action tensors to integer values.
             raw_actions = np.array(
                 [torch.clamp(a, -1, 1).numpy() for a in actions]
             )
 
             # Realize sampled actions in environment and evaluate new state.
-            states, rewards, dones, info = self.step_env(raw_actions)
-            times = [self.timestep==500] * 4
             
+            if dones: # Check to see if env reached terminal state (scoring goal | time limit)
+                self.reset_env()
+                goal_check = False
+                team = "23"
+                for i, v in enumerate(rewards):
+                    if v == -1.0:
+                        if i == 0:
+                            team = "01"
+                        goal_check = True
+
+                if goal_check:
+                    print(f'Team {team} scored a GOAL!, Reset Env\n')
+
+            states, rewards, dones, info = self.step_env(raw_actions)
+
             # Add experience to the memories for each agent.
-            for agent, state, action, log_prob, reward, time_ep in \
+            for agent, state, action, log_prob, reward in \
                     zip(self.agents, processed_states, actions, log_probs,
-                        rewards, times):
-                agent.add_memory(state, action, log_prob, reward, time_ep)
+                        rewards):
+                if (t+1 == self.max_episode_length): # last episode reached
+                    agent.add_memory(state, action, log_prob, reward, True)
+                else:
+                    agent.add_memory(state, action, log_prob, reward, False)
 
             # Initiate learning for agent if update frequency is observed.
             if self.timestep % self.update_frequency == 0:
@@ -132,32 +146,7 @@ class MAPPOTrainer:
                     agent.update()
 
             # Append reward gained for each new action.
-            scores.append(rewards)
-
-            # End episode if desired score is achieved.
-            
-            if dones:
-                #print(info)
-                goal_check = False
-                for i in rewards:
-                    if i == -1.0:
-                        goal_check = True
-            
-                if goal_check:
-                    print("Goal Scored!, Reset Env")
-                '''
-                else:
-                    print("Times up!, Reset Env")
-                '''
-                self.reset_env()
-                # print(",")
-                # print(t)
-                # print(states)
-        self.reset_env()
-                
-                
-            
-        #print("Episode Ending")
+            scores.append(rewards)    
         return scores
 
     def step(self):
@@ -199,6 +188,8 @@ class MAPPOTrainer:
         )
         agent_info = ''.join(f'Mean Reward Agent_{i}: {mean_reward[i]:.2f}, '
                              for i in range(len(self.agents)))
+        team_1_reward = f'Mean Reward Team 1: {(mean_reward[0] + mean_reward[1])/2:.2f}'
+        team_2_reward = f'Mean Reward Team 2: {(mean_reward[2] + mean_reward[3])/2:.2f}'
         max_mean = np.max(self.score_history[-self.score_window_size:],
                           axis=1).mean()
         mean_eps_len = np.mean(
@@ -209,9 +200,11 @@ class MAPPOTrainer:
         print(
             f'\033[1mEpisode {self.i_episode} - '
             f'Mean Max Reward: {max_mean:.2f}\033[0m'
-            f'\n\t{agent_info}\n\t'
+            f'\n{agent_info}\n'
+            f'{team_1_reward}\n'
+            f'{team_2_reward}\n'
             f'Mean Total Reward: {mean_reward.sum():.2f}, '
-            f'Mean Episode Length {mean_eps_len:.1f}'
+            f'Mean Episode Length {mean_eps_len:.1f}\n'
         )
 
     def plot(self):
