@@ -25,7 +25,9 @@ def hidden_init(layer):
 class Opponent:
     def __init__(self, state_size, action_size, fc1_units, fc2_units, weights_path=None):
         self.actor = ActorNet(state_size, action_size, fc1_units, fc2_units)
-        self.actor.load_state_dict(torch.load(weights_path), strict=False)
+        
+        if weights_path is not None:
+            self.actor.load_state_dict(torch.load(weights_path), strict=False)
         
         self.path_empty = weights_path is None
 
