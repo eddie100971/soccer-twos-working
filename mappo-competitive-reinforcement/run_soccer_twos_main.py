@@ -2,6 +2,7 @@ from mappo.mappo_trainer import MAPPOTrainer
 from mappo.ppo_model import PolicyNormal
 from mappo.ppo_model import CriticNet
 from mappo.ppo_model import ActorNet
+from mappo.ppo_model import Opponent
 from mappo.ppo_agent import PPOAgent
 from soccer_twos.wrappers import EnvType
 import soccer_twos
@@ -44,6 +45,15 @@ def load_env(env_loc):
 
     return env, num_agents, state_size, action_size
 
+def create_opponent(state_size, action_size, actor_fc1_units=512,
+                 actor_fc2_units=256, agent_ix=None, epoch=None):
+    if epoch is not None:
+        path = os.join(os.cwd, "saved_files", f"actor_agent_{agent_ix}_episode_{epoch}.pth") 
+    else:
+        path = None
+    
+    return Opponent(state_size, action_size, actor_fc1_units, actor_fc2_units, path)
+    
 
 def create_agent(state_size, action_size, actor_fc1_units=512,
                  actor_fc2_units=256, actor_lr=1e-4, critic_fc1_units=512,
@@ -204,6 +214,52 @@ def train_agents(env, trainer, n_episodes=3000, target_score=0.5,
         '''
     trainer.save()
 
+    def train_agents_sp(env, trainer, n_episodes=10, target_score=0.5,
+                 score_window_size=100, epochs = 10):
+        """
+        This function carries out the training process with specified trainer.
+
+        Arguments:
+            env: A UnityEnvironment used for Agent evaluation and training.
+            trainer: A MAPPOTrainer object used to train agents in environment.
+            n_episodes: An integer for maximum number of training episodes.
+            target_score: An float max mean target score to be achieved over
+                the last score_window_size episodes.
+            score_window_size: The integer number of past episode scores
+                utilized in order to calculate the current mean scores.
+        """
+
+        # Train the agent for n_episodes.
+        for epoch in range(epochs):
+            for i_episode in range(1, n_episodes + 1):
+
+                # Step through the training process.
+                trainer.step()
+                
+                trainer.print_status()
+                
+                # Print status of training every 100 episodes.
+                if i_episode % 100 == 0:
+                    scores = np.max(trainer.score_history, axis=1).tolist()
+                    trainer.print_status()
+
+                # If target achieved, print and plot reward statistics.
+                '''
+                mean_reward = np.max(
+                    trainer.score_history[-score_window_size:], axis=1
+                ).mean()
+                if mean_reward >= target_score:
+                    print('Environment is solved.')
+                    env.close()
+                    trainer.print_status()
+                    trainer.plot()
+                    trainer.save()
+                    break
+                '''
+            trainer.save()
+            trainer.opponents = [trainer.opponents.child(f"actor_agent_{o}_episode_{epoch}.pth") for o in (2,3)]
+            
+
 
 if __name__ == '__main__':
 
@@ -212,6 +268,7 @@ if __name__ == '__main__':
 
     # Initialize agents for training.
     agents = [create_agent(state_size, action_size) for _ in range(num_agents)]
+    oponents = [create_opponent(state_size, action_size) for _ in range(num_agents)]
 
     # Create MAPPOTrainer object to train agents.
     save_dir = os.path.join(os.getcwd(), r'saved_files')

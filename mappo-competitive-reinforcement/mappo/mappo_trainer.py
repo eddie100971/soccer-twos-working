@@ -5,6 +5,8 @@ import torch
 import time
 import os
 
+from ppo_model import Opponent
+
 plt.style.use('dark_background')
 
 
@@ -26,12 +28,13 @@ class MAPPOTrainer:
     """
 
     def __init__(self, env, agents, score_window_size, max_episode_length,
-                 update_frequency, save_dir):
+                 update_frequency, save_dir, opponents=None):
         """Initializes MAPPOTrainer attributes."""
 
         # Initialize relevant variables for training.
         self.env = env
         self.agents = agents
+        self.opponents = opponents if opponents is not None else [Opponent() for i in range(len(self.agents))]
         self.score_window_size = score_window_size
         self.max_episode_length = max_episode_length
         self.update_frequency = update_frequency
@@ -69,7 +72,7 @@ class MAPPOTrainer:
             env_info: BrainInfo object with current environment data.
         """
         # Construct the actions
-        actions_to_take = {i:actions[i] if i < 2 else [0,0,0] for i in range(4)}
+        actions_to_take = {i:actions[i] for i in range(4)}
         #actions_to_take = {i: [0,0,0] for i in range(4)}
         # From environment information, extract states and rewards.
         obs, rewards, done, info = self.env.step(actions_to_take)
@@ -108,6 +111,9 @@ class MAPPOTrainer:
                 processed_states.append(processed_state)
                 log_probs.append(log_prob)
                 actions.append(action)
+
+            for agent,state in zip(self.opponents, states):
+                actions.append(agent.get_actions(state))
 
             # Convert action tensors to integer values.
             raw_actions = np.array(
@@ -175,8 +181,11 @@ class MAPPOTrainer:
         for agent_ix in range(len(self.agents)):
             agent = self.agents[agent_ix]
             filename = f'agent_{agent_ix}_episode_{self.i_episode}.pth'
-            state_dict = agent.actor_critic.state_dict()
-            torch.save(state_dict, os.path.join(self.save_dir, filename))
+            actor_state_dict = agent.actor_critic.actor.state_dict()
+            torch.save(actor_state_dict, os.path.join(self.save_dir, "actor_" + filename))
+            critic_state_dict = agent.actor_critic.actor.state_dict()
+            torch.save(critic_state_dict, os.path.join(self.save_dir, "critic_" + filename))
+
 
     def print_status(self):
         """Prints reward info and episode length stats at current episode."""

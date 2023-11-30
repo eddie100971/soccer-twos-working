@@ -22,6 +22,35 @@ def hidden_init(layer):
     lim = 1. / np.sqrt(fan_in)
     return -lim, lim
 
+class Opponent:
+    def __init__(self, state_size, action_size, fc1_units, fc2_units, weights_path=None):
+        self.actor = ActorNet(state_size, action_size, fc1_units, fc2_units)
+        self.actor.load_state_dict(torch.load(weights_path), strict=False)
+        
+        self.path_empty = weights_path is None
+
+        self.state_size = state_size
+        self.action_size = action_size
+        self.fc1_units = fc1_units
+        self.fc2_units = fc2_units
+
+    def get_actions(self, state):
+        if self.path_empty:
+            return [0,0,0]
+        else:
+            action_mu, action_sigma = self.actor(state)
+            sigma = action_sigma.expand_as(action_mu)
+            dist = Normal(action_mu, sigma)
+            # Sample action value from generated distribution.
+            action = dist.sample()
+
+        return action
+    
+    def child(self, path):
+        return Opponent(self.state_size, self.action_size, self.fc1_units, self.fc2units, path)
+
+
+    
 
 class ActorNet(nn.Module):
     """
