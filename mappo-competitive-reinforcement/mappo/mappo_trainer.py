@@ -122,7 +122,7 @@ class MAPPOTrainer:
                 team = "23"
                 for i, v in enumerate(rewards):
                     if v == -1.0:
-                        if i == 0:
+                        if i == 2:
                             team = "01"
                         goal_check = True
 
