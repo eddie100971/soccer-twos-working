@@ -340,6 +340,9 @@ class PSRO(MAPPOTrainer):
                     elif len(self.utilities[i]) == j:
                         self.utilities.append([self.rollout(self.rollout_length)])
 
+            return Game(np.asarray(self.utilities)).support_enumeration(iterations=500)[0]
+
+
 
 if __name__ == '__main__':
 
