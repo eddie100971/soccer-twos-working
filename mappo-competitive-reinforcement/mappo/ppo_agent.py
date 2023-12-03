@@ -1,6 +1,7 @@
 from torch.utils.data import DataLoader
 from torch.utils.data import Dataset
 import torch
+import os
 
 
 class Memory:
@@ -174,6 +175,16 @@ class PPOAgent:
                                              keepdim=True) * sd_indicator).sum() / (sd_indicator.sum() + 1e-8)
             l2 = l2 * condition
 
+        ##### COMPUTE VARIANCE
+        min_surr = torch.min(surr1, surr2) # should this be max? i'm not 100% sure
+        if self.use_sd:    
+            mean = -torch.sum(min_surr * sd_indicator) / (torch.sum(sd_indicator) + 1e-8)
+            std = -torch.sum((min_surr * sd_indicator) * (min_surr * sd_indicator)) / (
+                torch.sum(sd_indicator) + 1e-8) - mean * mean
+        else:
+            mean = torch.mean(min_surr)
+            std = torch.mean(min_surr * min_surr) - mean * mean
+        #####
 
 
         # Compute Actor loss with entropy bonus and Critic loss.
@@ -187,6 +198,8 @@ class PPOAgent:
         loss2.backward()
         self.actor_optimizer.step()
         self.critic_optimizer.step()
+
+        return std * std
 
     def update(self):
         """Carries out updates on Actor/Critic Networks utilizing Memory."""
@@ -211,12 +224,15 @@ class PPOAgent:
         for _ in range(self.num_updates):
             for old_states_batch, old_actions_batch, old_log_probs_batch, \
                     rewards_batch in data_loader:
-                self.update_batch(
+                variance = self.update_batch(
                     old_states=old_states_batch,
                     old_actions=old_actions_batch,
                     old_log_probs=old_log_probs_batch,
                     rewards=rewards_batch
                 )
+                with open(os.path.join("..", "..", "saved_files", "variance"), "a") as f:
+                    f.write(variance + "\n")
+
 
         # Update old Actor/Critic networks to match current ones.
         self.actor_critic_old.load_state_dict(self.actor_critic.state_dict())

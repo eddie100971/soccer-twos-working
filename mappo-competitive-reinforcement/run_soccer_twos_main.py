@@ -7,6 +7,7 @@ from mappo.ppo_agent import PPOAgent
 from soccer_twos.wrappers import EnvType
 import soccer_twos
 import numpy as np
+from nashpy import Game
 import torch
 import sys  
 import os
@@ -259,9 +260,86 @@ def train_agents_sp(env, trainer, n_episodes=100, target_score=0.5,
             '''
         trainer.save()
         trainer.opponents = [trainer.opponents[o].child(os.path.join("saved_files", f"actor_agent_{o}_episode_{(epoch + 1)*n_episodes}.pth")) for o in (0,1)]
-        print(f'{epoch + 1} / {epochs} epochs done')
+        print(f'{epoch + 1} / {epochs} epochs done')      
 
-            
+
+class PSRO(MAPPOTrainer):
+    def __init__(self, env, agents, score_window_size, max_episode_length,
+                 update_frequency, save_dir, opponents, action_size, state_size, rollout_length):
+        super().__init__(self, env, agents, score_window_size, max_episode_length,
+                 update_frequency, save_dir, opponents)
+
+        self.population1 = [agents]
+        self.population2 = [opponents]
+        self.utilities = [[]]
+
+        self.agent_args = (action_size, state_size)
+        self.rollout_length = rollout_length
+
+
+
+    def rollout(self) -> int: # gets utility of two policies
+        """
+        Runs several episodes and averages the rewards
+
+        Returns:
+            utility: average utility of each episode
+        """
+
+        # Initialize list to hold reward values at each timestep.
+        utility = 0
+
+        for _ in range(self.rollout_length):
+            self.step()
+            utility += self.score_history[-1]
+        
+        return utility / self.rollout_length
+    
+    def run(self, epochs):
+
+        for i in range(len(self.population1)):
+            self.agents = self.population[i]
+            for j in range(len(self.population2)):
+                self.opponents = self.population[j]
+                if len(self.utilities) >= i:
+                    self.utilities[i].append(self.rollout(self.rollout_length))
+                else:
+                    self.utilities.append([self.rollout(self.rollout_length)])
+
+        for _ in range(epochs):
+            for population in (self.population1, self.population2):
+                #instantiate current team
+                self.agents = (create_agent(*self.agent_args))
+
+                ## rollouts
+                utility = 0
+                for i in range(self.rollout_length):
+                    #sample opponent policy
+                    nash = Game(np.asarray(self.utilities)).support_enumeration(iterations=500)[0]
+                    dis = torch.distributions.Categorical(torch.tensor(nash))
+                    self.opponents = self.opponents[dis.sample(1)]
+                    #train current team against opponent policy\
+                    self.step()
+                    utility += self.score_history[-1]
+                
+                utility = utility / self.rollout_length
+                if len(self.utilities) >= i:
+                    self.utilities[i].append(self.rollout(self.rollout_length))
+                else:
+                    self.utilities.append([self.rollout(self.rollout_length)])
+
+                ##add policy to population
+                population.append(self.agents)
+
+
+            ## Update Utility Table
+            for i in range(len(self.population1)):
+                self.agents = self.population1[i]
+                for j in range(len(self.population2)):
+                    if len(self.utilities) == i:
+                        self.utilities.append([self.rollout(self.rollout_length)])
+                    elif len(self.utilities[i]) == j:
+                        self.utilities.append([self.rollout(self.rollout_length)])
 
 
 if __name__ == '__main__':

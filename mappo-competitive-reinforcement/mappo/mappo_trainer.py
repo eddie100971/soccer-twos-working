@@ -6,6 +6,7 @@ import time
 import os
 
 from .ppo_model import Opponent
+from .ppo_agent import PPOAgent
 
 plt.style.use('dark_background')
 
@@ -244,3 +245,7 @@ class MAPPOTrainer:
         filename = f'scores_{self.i_episode}'
         fig.savefig(os.path.join(self.save_dir, filename))
         plt.show()
+
+
+
+        
