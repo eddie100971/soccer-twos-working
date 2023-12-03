@@ -31,7 +31,7 @@ def load_env(env_loc):
     """
 
     # Initialize unity environment, return message if error thrown.
-    env = soccer_twos.make(render=False, termination_mode="ALL")
+    env = soccer_twos.make(render=True, termination_mode="ALL")
 
     # Extract state dimensionality from env.
     state_size = env.observation_space.shape[0]
@@ -60,7 +60,7 @@ def create_agent(state_size, action_size, actor_fc1_units=512,
                  actor_fc2_units=256, actor_lr=1e-4, critic_fc1_units=512,
                  critic_fc2_units=256, critic_lr=1e-4, gamma=0.99,
                  num_updates=10, max_eps_length=1500, eps_clip=0.3,
-                 critic_loss=0.5, entropy_bonus=0.01, batch_size=256):
+                 critic_loss=0.5, entropy_bonus=0.01, batch_size=256, agent_ix = 0):
     """
     This function creates an agent with specified parameters for training.
 
@@ -108,8 +108,8 @@ def create_agent(state_size, action_size, actor_fc1_units=512,
     critic_net_old.load_state_dict(critic_net.state_dict())
 
     # Create PolicyNormal objects containing both sets of Actor/Critic nets.
-    actor_critic = PolicyNormal(actor_net, critic_net)
-    actor_critic_old = PolicyNormal(actor_net_old, critic_net_old)
+    actor_critic = PolicyNormal(actor_net, critic_net, agent_ix)
+    actor_critic_old = PolicyNormal(actor_net_old, critic_net_old, agent_ix)
 
     # Initialize optimizers for Actor and Critic networks.
     actor_optimizer = torch.optim.Adam(
@@ -139,8 +139,8 @@ def create_agent(state_size, action_size, actor_fc1_units=512,
     return agent
 
 
-def create_trainer(env, agents, opponents, save_dir, update_frequency=5000,
-                   max_eps_length=1500, score_window_size=100):
+def create_trainer(env, agents, opponents, save_dir, state_size=0, action_size=0, update_frequency=5000,
+                   max_eps_length=1500, score_window_size=100, use_PSRO=False):
     """
     Initializes trainer to train agents in specified environment.
 
@@ -158,7 +158,19 @@ def create_trainer(env, agents, opponents, save_dir, update_frequency=5000,
     Returns:
         trainer: A MAPPOTrainer object used to train agents in environment.
     """
-
+    if(use_PSRO):
+        trainer = PSRO(
+        env=env,
+        agents=agents,
+        opponents=opponents,
+        score_window_size=score_window_size,
+        max_episode_length=max_eps_length,
+        update_frequency=update_frequency,
+        save_dir=save_dir,
+        action_size=action_size,
+        state_size=state_size,
+        rollout_length= 100
+    )
     # Initialize MAPPOTrainer object with relevant arguments.
     trainer = MAPPOTrainer(
         env=env,
@@ -348,12 +360,13 @@ if __name__ == '__main__':
     env, num_agents, state_size, action_size = load_env(os.getcwd())
 
     # Initialize agents for training.
-    agents = [create_agent(state_size, action_size) for _ in range(num_agents)]
-    opponents = [create_opponent(state_size, action_size, epoch=10000, agent_ix=i) for i in range(num_agents)]
+    agents = [create_agent(state_size, action_size, agent_ix=_) for _ in range(num_agents)]
+    opponents = [create_opponent(state_size, action_size, epoch=8500, agent_ix=i) for i in range(num_agents)]
 
     # Create MAPPOTrainer object to train agents.
     save_dir = os.path.join(os.getcwd(), r'saved_files')
-    trainer = create_trainer(env, agents, opponents, save_dir)
+    trainer = create_trainer(env, agents, opponents, save_dir, state_size, action_size, use_PSRO=True)
 
     # Train agent in specified environment.
-    train_agents_sp(env, trainer)
+    # train_agents_sp(env, trainer)
+    trainer.run(10)
