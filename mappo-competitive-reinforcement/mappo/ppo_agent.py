@@ -72,7 +72,7 @@ class PPOAgent:
 
     def __init__(self, device, actor_critic, actor_critic_old, gamma,
                  num_updates, eps_clip, critic_loss, entropy_bonus,
-                 batch_size, actor_optimizer, critic_optimizer):
+                 batch_size, actor_optimizer, critic_optimizer, use_sd=False, sd_delta=0.5):
         """Initializes relevant variables for Agent object."""
 
         self.device = device
@@ -87,6 +87,9 @@ class PPOAgent:
         self.actor_optimizer = actor_optimizer
         self.critic_optimizer = critic_optimizer
         self.memory = Memory()
+
+        self.use_sd = use_sd
+        self.sd_delta = sd_delta
 
     def add_memory(self, state, action, log_prob, reward, done):
         """Stores experience variables to memory."""
@@ -157,6 +160,21 @@ class PPOAgent:
         l1 = -torch.min(surr1, surr2)
         l2 = self.critic_loss * (state_values - rewards) ** 2
         l3 = -self.entropy_bonus * dist_entropy
+
+        if self.use_sd:
+            with torch.no_grad():
+                sd_indicator = torch.lt(torch.abs(ratios - 1), self.sd_delta).float()
+                if torch.all(sd_indicator==0.0):
+                    condition = 1
+                else:
+                    condition = 0
+                sd_indicator = condition * torch.ones(sd_indicator.size(), device=torch.device('cuda')) + (1-condition) * sd_indicator
+            l1 = (-torch.sum(torch.min(surr1, surr2),
+                                             dim=-1,
+                                             keepdim=True) * sd_indicator).sum() / (sd_indicator.sum() + 1e-8)
+            l2 = l2 * condition
+
+
 
         # Compute Actor loss with entropy bonus and Critic loss.
         loss1 = (l1 + l3).mean()
