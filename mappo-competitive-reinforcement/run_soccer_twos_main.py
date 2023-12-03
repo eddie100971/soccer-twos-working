@@ -258,9 +258,7 @@ def train_agents_sp(env, trainer, n_episodes=100, target_score=0.5,
             '''
         trainer.save()
         trainer.opponents = [trainer.opponents[o].child(os.path.join("saved_files", f"actor_agent_{o}_episode_{(epoch + 1)*n_episodes}.pth")) for o in (0,1)]
-        print(f'{epoch + 1} / {epochs} epochs done')
-
-            
+        print(f'{epoch + 1} / {epochs} epochs done')      
 
 
 if __name__ == '__main__':
