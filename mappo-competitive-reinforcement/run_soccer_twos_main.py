@@ -48,7 +48,7 @@ def load_env(env_loc):
 def create_opponent(state_size, action_size, actor_fc1_units=512,
                  actor_fc2_units=256, agent_ix=None, epoch=None):
     if epoch is not None:
-        path = os.path.join(os.cwd, "saved_files", f"actor_agent_{agent_ix}_episode_{epoch}.pth") 
+        path = os.path.join(os.getcwd(), "saved_files", f"actor_agent_{agent_ix}_episode_{epoch}.pth") 
     else:
         path = None
     
@@ -138,7 +138,7 @@ def create_agent(state_size, action_size, actor_fc1_units=512,
     return agent
 
 
-def create_trainer(env, agents, save_dir, update_frequency=5000,
+def create_trainer(env, agents, opponents, save_dir, update_frequency=5000,
                    max_eps_length=1500, score_window_size=100):
     """
     Initializes trainer to train agents in specified environment.
@@ -162,6 +162,7 @@ def create_trainer(env, agents, save_dir, update_frequency=5000,
     trainer = MAPPOTrainer(
         env=env,
         agents=agents,
+        opponents=opponents,
         score_window_size=score_window_size,
         max_episode_length=max_eps_length,
         update_frequency=update_frequency,
@@ -270,11 +271,11 @@ if __name__ == '__main__':
 
     # Initialize agents for training.
     agents = [create_agent(state_size, action_size) for _ in range(num_agents)]
-    oponents = [create_opponent(state_size, action_size) for _ in range(num_agents)]
+    opponents = [create_opponent(state_size, action_size, epoch=10000, agent_ix=i) for i in range(num_agents)]
 
     # Create MAPPOTrainer object to train agents.
     save_dir = os.path.join(os.getcwd(), r'saved_files')
-    trainer = create_trainer(env, agents, save_dir)
+    trainer = create_trainer(env, agents, opponents, save_dir)
 
     # Train agent in specified environment.
     train_agents_sp(env, trainer)
