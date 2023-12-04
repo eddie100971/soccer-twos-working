@@ -172,13 +172,16 @@ class PolicyNormal(nn.Module):
         critic: Critic network to evaluate Normal distribution.
     """
 
-    def __init__(self, actor, critic):
+    def __init__(self, actor, critic, agent=0):
         """Specifies Actor and Critic networks for model evaluation."""
 
         # Initialize inheritance and relevant variables.
         super().__init__()
         self.actor = actor
         self.critic = critic
+        # a = "a"
+        # self.actor.load_state_dict(torch.load(f"C:\dev\soccer-twos-working\saved_files\{a}ctor_agent_{agent}_episode_8500.pth"), strict=False)
+        # self.critic.load_state_dict(torch.load(f"C:\dev\soccer-twos-working\saved_files\critic_agent_{agent}_episode_8500.pth"), strict=False)
 
     def get_dist(self, mu, sigma):
         """

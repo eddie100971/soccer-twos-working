@@ -230,8 +230,8 @@ class PPOAgent:
                     old_log_probs=old_log_probs_batch,
                     rewards=rewards_batch
                 )
-                with open(os.path.join("..", "..", "saved_files", "variance"), "a") as f:
-                    f.write(variance + "\n")
+                with open((r"C:\dev\soccer-twos-working\saved_files\variance.txt"), "a") as f:
+                    f.write(f"{variance.item()}" + "\n")
 
 
         # Update old Actor/Critic networks to match current ones.

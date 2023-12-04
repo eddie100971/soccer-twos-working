@@ -31,7 +31,7 @@ def load_env(env_loc):
     """
 
     # Initialize unity environment, return message if error thrown.
-    env = soccer_twos.make(render=True, termination_mode="ALL")
+    env = soccer_twos.make(render=True, termination_mode="ALL", time_scale=80)
 
     # Extract state dimensionality from env.
     state_size = env.observation_space.shape[0]
@@ -166,21 +166,22 @@ def create_trainer(env, agents, opponents, save_dir, state_size=0, action_size=0
         score_window_size=score_window_size,
         max_episode_length=max_eps_length,
         update_frequency=update_frequency,
-        save_dir=save_dir,
-        action_size=action_size,
-        state_size=state_size,
-        rollout_length= 100
-    )
-    # Initialize MAPPOTrainer object with relevant arguments.
-    trainer = MAPPOTrainer(
-        env=env,
-        agents=agents,
-        opponents=opponents,
-        score_window_size=score_window_size,
-        max_episode_length=max_eps_length,
-        update_frequency=update_frequency,
         save_dir=save_dir
+        # action_size=action_size,
+        # state_size=state_size,
+        # rollout_length= 100
     )
+    else:
+    # Initialize MAPPOTrainer object with relevant arguments.
+        trainer = MAPPOTrainer(
+            env=env,
+            agents=agents,
+            opponents=opponents,
+            score_window_size=score_window_size,
+            max_episode_length=max_eps_length,
+            update_frequency=update_frequency,
+            save_dir=save_dir
+        )
 
     return trainer
 
@@ -277,16 +278,16 @@ def train_agents_sp(env, trainer, n_episodes=100, target_score=0.5,
 
 class PSRO(MAPPOTrainer):
     def __init__(self, env, agents, score_window_size, max_episode_length,
-                 update_frequency, save_dir, opponents, action_size, state_size, rollout_length):
-        super().__init__(self, env, agents, score_window_size, max_episode_length,
+                 update_frequency, save_dir, opponents):#, #action_size, state_size, rollout_length):
+        super().__init__(env, agents, score_window_size, max_episode_length,
                  update_frequency, save_dir, opponents)
 
         self.population1 = [agents]
         self.population2 = [opponents]
         self.utilities = [[]]
 
-        self.agent_args = (action_size, state_size)
-        self.rollout_length = rollout_length
+        self.agent_args = (3, 336)
+        self.rollout_length = 3
 
 
 
@@ -310,13 +311,13 @@ class PSRO(MAPPOTrainer):
     def run(self, epochs):
 
         for i in range(len(self.population1)):
-            self.agents = self.population[i]
+            self.agents = self.population1[i]
             for j in range(len(self.population2)):
-                self.opponents = self.population[j]
+                self.opponents = self.population2[j]
                 if len(self.utilities) >= i:
-                    self.utilities[i].append(self.rollout(self.rollout_length))
+                    self.utilities[i].append(self.rollout())
                 else:
-                    self.utilities.append([self.rollout(self.rollout_length)])
+                    self.utilities.append([self.rollout(x)])
 
         for _ in range(epochs):
             for population in (self.population1, self.population2):
@@ -327,7 +328,8 @@ class PSRO(MAPPOTrainer):
                 utility = 0
                 for i in range(self.rollout_length):
                     #sample opponent policy
-                    nash = Game(np.asarray(self.utilities)).support_enumeration(iterations=500)[0]
+                    print(np.vstack(self.utilities).shape())            #tuple object is not callable
+                    nash = Game(np.array(self.utilities)).support_enumeration().__next__()[0]
                     dis = torch.distributions.Categorical(torch.tensor(nash))
                     self.opponents = self.opponents[dis.sample(1)]
                     #train current team against opponent policy\
@@ -353,7 +355,10 @@ class PSRO(MAPPOTrainer):
                     elif len(self.utilities[i]) == j:
                         self.utilities.append([self.rollout(self.rollout_length)])
 
-            return Game(np.asarray(self.utilities)).support_enumeration(iterations=500)[0]
+            for i in self.utilities:
+                print(i)
+
+            return Game(np.asarray(self.utilities)).support_enumeration().__next__()[0]
 
 
 
@@ -361,15 +366,15 @@ if __name__ == '__main__':
 
     # Initialize environment, extract state/action dimensions and num agents.
     env, num_agents, state_size, action_size = load_env(os.getcwd())
-
+    print(state_size, action_size)
     # Initialize agents for training.
     agents = [create_agent(state_size, action_size, agent_ix=_) for _ in range(num_agents)]
     opponents = [create_opponent(state_size, action_size, epoch=8500, agent_ix=i) for i in range(num_agents)]
 
     # Create MAPPOTrainer object to train agents.
     save_dir = os.path.join(os.getcwd(), r'saved_files')
-    trainer = create_trainer(env, agents, opponents, save_dir, state_size, action_size, use_PSRO=True)
+    trainer = create_trainer(env, agents, opponents, save_dir, state_size, action_size, use_PSRO=False)
 
     # Train agent in specified environment.
-    # train_agents_sp(env, trainer)
-    trainer.run(10)
+    train_agents_sp(env, trainer)
+    # trainer.run(10)
