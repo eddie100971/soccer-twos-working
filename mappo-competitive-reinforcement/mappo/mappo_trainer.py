@@ -5,10 +5,9 @@ import torch
 import time
 import os
 import json
-
 from .ppo_model import Opponent
 from .ppo_agent import PPOAgent
-
+import wandb
 plt.style.use('dark_background')
 
 
@@ -120,22 +119,10 @@ class MAPPOTrainer:
                 actions.append(agent.get_actions(torch.from_numpy(state).float())[0])
             
             # Convert action tensors to integer values.
-            try:
-                raw_actions = np.array(
-                    [torch.clamp(a, -1, 1).numpy() for a in actions]
-                )
-            except:
-                print(self.opponents)
-                print(len(self.opponents))
-                print()
-                print(actions)
-                print(len(actions))
-                print()
-                print(self.agents)
-                print(len(self.agents))
-                print()
-
-                raise Exception
+            raw_actions = np.array(
+                [torch.clamp(a, -1, 1).numpy() for a in actions]
+            )
+        
 
             # Realize sampled actions in environment and evaluate new state.
             
@@ -148,7 +135,7 @@ class MAPPOTrainer:
                         if i == 2:
                             team = "01"
                             utilities += 1
-                        else:
+                        elif i == 0:
                             utilities -= 1
                         goal_check = True
 
@@ -168,8 +155,8 @@ class MAPPOTrainer:
 
             # Initiate learning for agent if update frequency is observed.
             if self.timestep % self.update_frequency == 0:
-                for agent in self.agents:
-                    agent.update()
+                for agent_num, agent in enumerate(self.agents):
+                    agent.update(agent_num, self.timestep)
 
             # Append reward gained for each new action.
             scores.append(rewards)    
@@ -236,6 +223,8 @@ class MAPPOTrainer:
             f'Mean Total Reward: {mean_reward.sum():.2f}, '
             f'Mean Episode Length {mean_eps_len:.1f}\n'
         )
+        save_data = {"Mean-Max Reward": float(max_mean)}
+        wandb.log(save_data, self.timestep)
 
         save_data = {"Mean-Max Reward": max_mean, "Episode": self.i_episode}
         with open((r"C:\dev\soccer-twos-working\saved_files\run_data.json"), "a") as f:

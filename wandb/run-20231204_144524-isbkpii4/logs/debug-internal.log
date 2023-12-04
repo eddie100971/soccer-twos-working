@@ -1,0 +1,253 @@
+2023-12-04 14:45:24,037 INFO    StreamThr :12424 [internal.py:wandb_internal():86] W&B internal server running at pid: 12424, started at: 2023-12-04 14:45:24.036140
+2023-12-04 14:45:24,040 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status
+2023-12-04 14:45:24,045 INFO    WriterThread:12424 [datastore.py:open_for_write():85] open: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\run-isbkpii4.wandb
+2023-12-04 14:45:24,047 DEBUG   SenderThread:12424 [sender.py:send():380] send: header
+2023-12-04 14:45:24,110 DEBUG   SenderThread:12424 [sender.py:send():380] send: run
+2023-12-04 14:45:24,384 INFO    SenderThread:12424 [dir_watcher.py:__init__():211] watching files in: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files
+2023-12-04 14:45:24,385 INFO    SenderThread:12424 [sender.py:_start_run_threads():1124] run started: isbkpii4 with start time 1701729924.038141
+2023-12-04 14:45:24,404 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: check_version
+2023-12-04 14:45:24,404 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: check_version
+2023-12-04 14:45:24,482 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: run_start
+2023-12-04 14:45:24,509 DEBUG   HandlerThread:12424 [system_info.py:__init__():32] System info init
+2023-12-04 14:45:24,509 DEBUG   HandlerThread:12424 [system_info.py:__init__():47] System info init done
+2023-12-04 14:45:24,509 INFO    HandlerThread:12424 [system_monitor.py:start():194] Starting system monitor
+2023-12-04 14:45:24,510 INFO    SystemMonitor:12424 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2023-12-04 14:45:24,510 INFO    HandlerThread:12424 [system_monitor.py:probe():214] Collecting system info
+2023-12-04 14:45:24,516 INFO    SystemMonitor:12424 [interfaces.py:start():190] Started cpu monitoring
+2023-12-04 14:45:24,517 INFO    SystemMonitor:12424 [interfaces.py:start():190] Started disk monitoring
+2023-12-04 14:45:24,518 INFO    SystemMonitor:12424 [interfaces.py:start():190] Started gpu monitoring
+2023-12-04 14:45:24,519 INFO    SystemMonitor:12424 [interfaces.py:start():190] Started memory monitoring
+2023-12-04 14:45:24,530 INFO    SystemMonitor:12424 [interfaces.py:start():190] Started network monitoring
+2023-12-04 14:45:24,530 DEBUG   HandlerThread:12424 [system_info.py:probe():196] Probing system
+2023-12-04 14:45:24,532 DEBUG   HandlerThread:12424 [system_info.py:_probe_git():181] Probing git
+2023-12-04 14:45:24,647 DEBUG   HandlerThread:12424 [system_info.py:_probe_git():189] Probing git done
+2023-12-04 14:45:24,647 DEBUG   HandlerThread:12424 [system_info.py:probe():244] Probing system done
+2023-12-04 14:45:24,647 DEBUG   HandlerThread:12424 [system_monitor.py:probe():223] {'os': 'Windows-10-10.0.19045-SP0', 'python': '3.10.0', 'heartbeatAt': '2023-12-04T22:45:24.530672', 'startedAt': '2023-12-04T22:45:24.025138', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': 'c:\\dev2\\soccer-twos-working\\mappo-competitive-reinforcement\\run_soccer_twos_main.py', 'codePathLocal': 'mappo-competitive-reinforcement\\run_soccer_twos_main.py', 'codePath': 'mappo-competitive-reinforcement\\run_soccer_twos_main.py', 'git': {'remote': 'https://github.com/eddie100971/soccer-twos-working.git', 'commit': '5abd8f2b1696956443459e9f7d5b35f64ddd5009'}, 'email': 'egatchal@uci.edu', 'root': 'C:/dev2/soccer-twos-working', 'host': 'DESKTOP-2BQT21Q', 'username': 'ericg', 'executable': 'C:\\Users\\ericg\\AppData\\Local\\Programs\\Python\\Python310\\python.exe', 'cpu_count': 4, 'cpu_count_logical': 8, 'cpu_freq': {'current': 3601.0, 'min': 0.0, 'max': 3601.0}, 'cpu_freq_per_core': [{'current': 3601.0, 'min': 0.0, 'max': 3601.0}], 'disk': {'/': {'total': 930.3854827880859, 'used': 848.9450950622559}}, 'gpu': 'NVIDIA GeForce GTX 1060 3GB', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce GTX 1060 3GB', 'memory_total': 3221225472}], 'memory': {'total': 23.962787628173828}}
+2023-12-04 14:45:24,647 INFO    HandlerThread:12424 [system_monitor.py:probe():224] Finished collecting system info
+2023-12-04 14:45:24,647 INFO    HandlerThread:12424 [system_monitor.py:probe():227] Publishing system info
+2023-12-04 14:45:24,647 DEBUG   HandlerThread:12424 [system_info.py:_save_pip():52] Saving list of pip packages installed into the current environment
+2023-12-04 14:45:24,648 DEBUG   HandlerThread:12424 [system_info.py:_save_pip():68] Saving pip packages done
+2023-12-04 14:45:24,649 INFO    HandlerThread:12424 [system_monitor.py:probe():229] Finished publishing system info
+2023-12-04 14:45:24,664 DEBUG   SenderThread:12424 [sender.py:send():380] send: files
+2023-12-04 14:45:24,665 INFO    SenderThread:12424 [sender.py:_save_file():1380] saving file wandb-metadata.json with policy now
+2023-12-04 14:45:24,674 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:45:24,675 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:45:24,677 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:45:24,845 DEBUG   SenderThread:12424 [sender.py:send():380] send: telemetry
+2023-12-04 14:45:25,316 INFO    wandb-upload_0:12424 [upload_job.py:push():131] Uploaded file C:\Users\ericg\AppData\Local\Temp\tmphiglyg01wandb\fwgdynwn-wandb-metadata.json
+2023-12-04 14:45:25,392 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_created():271] file/dir created: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\requirements.txt
+2023-12-04 14:45:25,392 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_created():271] file/dir created: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\wandb-metadata.json
+2023-12-04 14:45:25,393 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_created():271] file/dir created: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:45:27,412 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:45:29,429 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:45:34,474 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:45:37,615 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:45:39,510 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:45:39,637 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:45:39,686 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:45:39,686 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:45:39,686 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:45:44,836 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:45:48,888 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:45:48,890 DEBUG   SenderThread:12424 [sender.py:send():380] send: history
+2023-12-04 14:45:48,890 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: summary_record
+2023-12-04 14:45:48,892 INFO    SenderThread:12424 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-12-04 14:45:49,587 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:45:49,587 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_created():271] file/dir created: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\wandb-summary.json
+2023-12-04 14:45:49,895 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:45:54,680 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:45:54,696 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:45:54,696 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:45:55,833 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:45:56,651 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\config.yaml
+2023-12-04 14:45:59,839 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:45:59,840 DEBUG   SenderThread:12424 [sender.py:send():380] send: history
+2023-12-04 14:45:59,841 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: summary_record
+2023-12-04 14:45:59,842 INFO    SenderThread:12424 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-12-04 14:46:00,683 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\wandb-summary.json
+2023-12-04 14:46:01,692 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:46:01,865 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:46:06,906 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:46:07,458 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:46:07,459 DEBUG   SenderThread:12424 [sender.py:send():380] send: history
+2023-12-04 14:46:07,459 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: summary_record
+2023-12-04 14:46:07,461 INFO    SenderThread:12424 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-12-04 14:46:07,762 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\wandb-summary.json
+2023-12-04 14:46:09,694 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:46:09,694 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:46:09,695 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:46:09,789 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:46:10,979 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:46:11,813 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:46:12,114 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:46:17,174 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:46:17,661 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:46:17,662 DEBUG   SenderThread:12424 [sender.py:send():380] send: history
+2023-12-04 14:46:17,662 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: summary_record
+2023-12-04 14:46:17,663 INFO    SenderThread:12424 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-12-04 14:46:17,886 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\wandb-summary.json
+2023-12-04 14:46:19,939 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:46:22,715 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:46:24,531 DEBUG   SystemMonitor:12424 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2023-12-04 14:46:24,532 DEBUG   SenderThread:12424 [sender.py:send():380] send: stats
+2023-12-04 14:46:24,708 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:46:24,708 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:46:24,709 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:46:27,439 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:46:27,440 DEBUG   SenderThread:12424 [sender.py:send():380] send: history
+2023-12-04 14:46:27,441 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: summary_record
+2023-12-04 14:46:27,441 INFO    SenderThread:12424 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-12-04 14:46:28,020 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\wandb-summary.json
+2023-12-04 14:46:28,020 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:46:28,444 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:46:33,518 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:46:36,093 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:46:37,965 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:46:37,967 DEBUG   SenderThread:12424 [sender.py:send():380] send: history
+2023-12-04 14:46:37,967 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: summary_record
+2023-12-04 14:46:37,968 INFO    SenderThread:12424 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-12-04 14:46:38,107 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\wandb-summary.json
+2023-12-04 14:46:38,979 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:46:39,724 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:46:39,724 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:46:39,725 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:46:40,133 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:46:44,934 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:46:49,572 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:46:49,573 DEBUG   SenderThread:12424 [sender.py:send():380] send: history
+2023-12-04 14:46:49,573 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: summary_record
+2023-12-04 14:46:49,575 INFO    SenderThread:12424 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-12-04 14:46:50,222 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\wandb-summary.json
+2023-12-04 14:46:50,581 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:46:52,247 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:46:53,805 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:46:54,548 DEBUG   SenderThread:12424 [sender.py:send():380] send: stats
+2023-12-04 14:46:54,738 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:46:54,738 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:46:54,739 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:46:56,288 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:46:57,132 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:46:59,787 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: keepalive
+2023-12-04 14:47:04,836 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: keepalive
+2023-12-04 14:47:08,401 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:47:09,751 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:47:14,915 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: keepalive
+2023-12-04 14:47:15,959 DEBUG   SenderThread:12424 [sender.py:send():380] send: history
+2023-12-04 14:47:15,959 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:47:15,959 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: summary_record
+2023-12-04 14:47:15,962 INFO    SenderThread:12424 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-12-04 14:47:15,963 DEBUG   SenderThread:12424 [sender.py:send():380] send: history
+2023-12-04 14:47:15,963 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: summary_record
+2023-12-04 14:47:15,963 INFO    SenderThread:12424 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-12-04 14:47:16,508 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\wandb-summary.json
+2023-12-04 14:47:18,532 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:47:18,780 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:47:18,781 DEBUG   SenderThread:12424 [sender.py:send():380] send: history
+2023-12-04 14:47:18,781 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: summary_record
+2023-12-04 14:47:18,782 INFO    SenderThread:12424 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-12-04 14:47:19,542 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\wandb-summary.json
+2023-12-04 14:47:19,954 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: keepalive
+2023-12-04 14:47:20,552 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:47:21,803 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:47:24,559 DEBUG   SenderThread:12424 [sender.py:send():380] send: stats
+2023-12-04 14:47:24,765 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:47:27,588 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:47:30,040 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: keepalive
+2023-12-04 14:47:32,648 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:47:33,116 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:47:33,117 DEBUG   SenderThread:12424 [sender.py:send():380] send: history
+2023-12-04 14:47:33,118 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: summary_record
+2023-12-04 14:47:33,120 INFO    SenderThread:12424 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-12-04 14:47:33,721 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\wandb-summary.json
+2023-12-04 14:47:34,735 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:47:35,110 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: keepalive
+2023-12-04 14:47:37,840 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:47:37,840 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:47:37,864 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:47:39,780 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:47:40,792 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:47:43,743 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:47:45,219 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: keepalive
+2023-12-04 14:47:47,903 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:47:47,904 DEBUG   SenderThread:12424 [sender.py:send():380] send: history
+2023-12-04 14:47:47,904 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: summary_record
+2023-12-04 14:47:47,906 INFO    SenderThread:12424 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-12-04 14:47:48,879 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\wandb-summary.json
+2023-12-04 14:47:48,911 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:47:49,891 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:47:50,267 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: keepalive
+2023-12-04 14:47:53,960 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:47:54,560 DEBUG   SenderThread:12424 [sender.py:send():380] send: stats
+2023-12-04 14:47:54,780 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:47:58,092 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:47:58,092 DEBUG   SenderThread:12424 [sender.py:send():380] send: history
+2023-12-04 14:47:58,093 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: summary_record
+2023-12-04 14:47:58,095 INFO    SenderThread:12424 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-12-04 14:47:58,993 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\wandb-summary.json
+2023-12-04 14:47:59,105 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:48:00,007 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:48:00,387 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: keepalive
+2023-12-04 14:48:04,049 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:48:04,236 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:48:05,432 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: keepalive
+2023-12-04 14:48:09,031 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:48:09,033 DEBUG   SenderThread:12424 [sender.py:send():380] send: history
+2023-12-04 14:48:09,033 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: summary_record
+2023-12-04 14:48:09,035 INFO    SenderThread:12424 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-12-04 14:48:09,097 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\wandb-summary.json
+2023-12-04 14:48:09,775 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:48:10,043 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:48:10,108 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:48:15,078 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:48:15,603 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: keepalive
+2023-12-04 14:48:15,764 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:48:15,765 DEBUG   SenderThread:12424 [sender.py:send():380] send: history
+2023-12-04 14:48:15,765 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: summary_record
+2023-12-04 14:48:15,766 INFO    SenderThread:12424 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-12-04 14:48:16,158 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\wandb-summary.json
+2023-12-04 14:48:16,158 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:48:19,370 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:48:20,211 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:48:20,385 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:48:20,653 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: keepalive
+2023-12-04 14:48:24,561 DEBUG   SenderThread:12424 [sender.py:send():380] send: stats
+2023-12-04 14:48:24,781 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:48:25,565 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:48:26,579 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:48:26,580 DEBUG   SenderThread:12424 [sender.py:send():380] send: history
+2023-12-04 14:48:26,581 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: summary_record
+2023-12-04 14:48:26,582 INFO    SenderThread:12424 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-12-04 14:48:27,286 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\wandb-summary.json
+2023-12-04 14:48:28,287 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:48:30,299 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:48:30,726 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: keepalive
+2023-12-04 14:48:31,143 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:48:35,779 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: keepalive
+2023-12-04 14:48:36,202 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:48:38,378 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:48:38,421 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:48:38,421 DEBUG   SenderThread:12424 [sender.py:send():380] send: history
+2023-12-04 14:48:38,422 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: summary_record
+2023-12-04 14:48:38,422 INFO    SenderThread:12424 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-12-04 14:48:39,391 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\wandb-summary.json
+2023-12-04 14:48:39,798 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:48:40,403 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:48:41,460 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:48:44,431 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:48:44,855 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: keepalive
+2023-12-04 14:48:46,585 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:48:48,141 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:48:48,142 DEBUG   SenderThread:12424 [sender.py:send():380] send: history
+2023-12-04 14:48:48,142 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: summary_record
+2023-12-04 14:48:48,143 INFO    SenderThread:12424 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-12-04 14:48:48,457 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\wandb-summary.json
+2023-12-04 14:48:49,889 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: keepalive
+2023-12-04 14:48:50,473 INFO    Thread-16 :12424 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_144524-isbkpii4\files\output.log
+2023-12-04 14:48:52,179 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:48:54,573 DEBUG   SenderThread:12424 [sender.py:send():380] send: stats
+2023-12-04 14:48:54,807 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:48:57,606 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:48:58,821 DEBUG   HandlerThread:12424 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:48:58,822 DEBUG   SenderThread:12424 [sender.py:send():380] send: history
+2023-12-04 14:48:58,822 DEBUG   SenderThread:12424 [sender.py:send_request():407] send_request: summary_record
+2023-12-04 14:48:58,822 INFO    SenderThread:12424 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end

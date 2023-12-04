@@ -1,0 +1,53 @@
+{
+    "os": "Windows-10-10.0.19045-SP0",
+    "python": "3.10.0",
+    "heartbeatAt": "2023-12-04T21:54:21.964072",
+    "startedAt": "2023-12-04T21:54:21.452605",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "c:\\dev2\\soccer-twos-working\\mappo-competitive-reinforcement\\run_soccer_twos_main.py",
+    "codePathLocal": "mappo-competitive-reinforcement\\run_soccer_twos_main.py",
+    "codePath": "mappo-competitive-reinforcement\\run_soccer_twos_main.py",
+    "git": {
+        "remote": "https://github.com/eddie100971/soccer-twos-working.git",
+        "commit": "5abd8f2b1696956443459e9f7d5b35f64ddd5009"
+    },
+    "email": "egatchal@uci.edu",
+    "root": "C:/dev2/soccer-twos-working",
+    "host": "DESKTOP-2BQT21Q",
+    "username": "ericg",
+    "executable": "C:\\Users\\ericg\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "cpu_count": 4,
+    "cpu_count_logical": 8,
+    "cpu_freq": {
+        "current": 3601.0,
+        "min": 0.0,
+        "max": 3601.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3601.0,
+            "min": 0.0,
+            "max": 3601.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 930.3854827880859,
+            "used": 848.8260345458984
+        }
+    },
+    "gpu": "NVIDIA GeForce GTX 1060 3GB",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce GTX 1060 3GB",
+            "memory_total": 3221225472
+        }
+    ],
+    "memory": {
+        "total": 23.962787628173828
+    }
+}
