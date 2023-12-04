@@ -230,7 +230,7 @@ def train_agents(env, trainer, n_episodes=100, target_score=0.5,
     trainer.save()
 
 def train_agents_sp(env, trainer, n_episodes=100, target_score=0.5,
-                score_window_size=100, epochs = 5):
+                score_window_size=100, epochs = 85):
     """
     This function carries out the training process with specified trainer.
 
@@ -370,8 +370,8 @@ if __name__ == '__main__':
     opponents = [create_opponent(state_size, action_size, epoch=None, agent_ix=i) for i in range(2,4)]
     # Create MAPPOTrainer object to train agents.
     save_dir = os.path.join(os.getcwd(), r'saved_files')
-    trainer = create_trainer(env, agents, opponents, save_dir, state_size, action_size, use_PSRO=True)
+    trainer = create_trainer(env, agents, opponents, save_dir, state_size, action_size, use_PSRO=False)
 
     # Train agent in specified environment.
-    #train_agents_sp(env, trainer, n_episodes=1)
-    trainer.run(1)
+    train_agents_sp(env, trainer, n_episodes=100)
+    # trainer.run(1)

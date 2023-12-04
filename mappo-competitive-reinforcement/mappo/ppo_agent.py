@@ -2,6 +2,7 @@ from torch.utils.data import DataLoader
 from torch.utils.data import Dataset
 import torch
 import os
+import json
 
 
 class Memory:
@@ -199,7 +200,7 @@ class PPOAgent:
         self.actor_optimizer.step()
         self.critic_optimizer.step()
 
-        return std * std
+        return std * std, loss1
 
     def update(self):
         """Carries out updates on Actor/Critic Networks utilizing Memory."""
@@ -224,14 +225,18 @@ class PPOAgent:
         for _ in range(self.num_updates):
             for old_states_batch, old_actions_batch, old_log_probs_batch, \
                     rewards_batch in data_loader:
-                variance = self.update_batch(
+                variance, policy_loss = self.update_batch(
                     old_states=old_states_batch,
                     old_actions=old_actions_batch,
                     old_log_probs=old_log_probs_batch,
                     rewards=rewards_batch
                 )
-                with open((r"C:\dev2\soccer-twos-working\saved_files\variance.txt"), "a") as f:
-                    f.write(f"{variance.item()}" + "\n")
+                # with open((r"C:\dev\soccer-twos-working\saved_files\variance_SD.txt"), "a") as f:
+                #     f.write(f"{variance.item()}" + "\n")
+
+                save_data = {"Policy Loss": policy_loss, "Variance": variance}
+                with open((r"C:\dev\soccer-twos-working\saved_files\with_policyloss_variance_SD.txt"), "a") as f:
+                    json.dump(save_data, f)
 
 
         # Update old Actor/Critic networks to match current ones.

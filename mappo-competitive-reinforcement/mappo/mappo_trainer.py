@@ -4,6 +4,7 @@ import numpy as np
 import torch
 import time
 import os
+import json
 
 from .ppo_model import Opponent
 from .ppo_agent import PPOAgent
@@ -236,6 +237,10 @@ class MAPPOTrainer:
             f'Mean Episode Length {mean_eps_len:.1f}\n'
         )
 
+        save_data = {"Mean-Max Reward": max_mean, "Episode": self.i_episode}
+        with open((r"C:\dev\soccer-twos-working\saved_files\run_data.json"), "a") as f:
+            json.dump(save_data, f)
+
     def plot(self):
         """
         Plots moving averages of maximum reward and rewards for each agent.
@@ -264,7 +269,6 @@ class MAPPOTrainer:
         filename = f'scores_{self.i_episode}'
         fig.savefig(os.path.join(self.save_dir, filename))
         plt.show()
-
 
 
         
