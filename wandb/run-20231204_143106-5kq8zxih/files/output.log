@@ -1,0 +1,55 @@
+[INFO] Connected to Unity environment with package version 2.1.0-exp.1 and communication version 1.5.0
+[INFO] Connected new brain: SoccerTwos?team=1
+[INFO] Connected new brain: SoccerTwos?team=0
+Number of Agents: 4, State Size: 336, Action Size: 3
+336 3
+INFO:mlagents_envs.environment:Connected to Unity environment with package version 2.1.0-exp.1 and communication version 1.5.0
+INFO:mlagents_envs.environment:Connected new brain: SoccerTwos?team=1
+INFO:mlagents_envs.environment:Connected new brain: SoccerTwos?team=0
+Team 23 scored a GOAL!, Reset Env
+c:\dev2\soccer-twos-working\mappo-competitive-reinforcement\mappo\ppo_model.py:44: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  action_mu, action_sigma = self.actor(torch.tensor(state))
+c:\dev2\soccer-twos-working\mappo-competitive-reinforcement\mappo\ppo_model.py:51: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  return torch.tensor(action), log_prob
+[1mEpisode 1 - Mean Max Reward: 0.59
+Mean Reward Agent_0: -1.00, Mean Reward Agent_1: -1.00,
+Mean Reward Team 1: -1.00
+Mean Reward Team 2: 0.59
+Mean Total Reward: -0.82, Mean Episode Length 1500.0
+[<mappo.ppo_model.Opponent object at 0x0000015E7277D1B0>, <mappo.ppo_model.Opponent object at 0x0000015E7277D0F0>]
+1 / 5 epochs done
+[1mEpisode 2 - Mean Max Reward: 0.29
+Mean Reward Agent_0: -0.50, Mean Reward Agent_1: -0.50,
+Mean Reward Team 1: -0.50
+Mean Reward Team 2: 0.29
+Mean Total Reward: -0.41, Mean Episode Length 1500.0
+[<mappo.ppo_model.Opponent object at 0x0000015E72810D30>, <mappo.ppo_model.Opponent object at 0x0000015E72810F70>]
+2 / 5 epochs done
+Team 23 scored a GOAL!, Reset Env
+[1mEpisode 3 - Mean Max Reward: 0.26
+Mean Reward Agent_0: -0.67, Mean Reward Agent_1: -0.67,
+Mean Reward Team 1: -0.67
+Mean Reward Team 2: 0.26
+Mean Total Reward: -0.82, Mean Episode Length 1500.0
+[<mappo.ppo_model.Opponent object at 0x0000015E72810F40>, <mappo.ppo_model.Opponent object at 0x0000015E72810DC0>]
+3 / 5 epochs done
+Trying to log variance and policyloss
+Trying to log variance and policyloss
+Team 01 scored a GOAL!, Reset Env
+Team 01 scored a GOAL!, Reset Env
+[1mEpisode 4 - Mean Max Reward: 0.52
+Mean Reward Agent_0: -0.17, Mean Reward Agent_1: -0.17,
+Mean Reward Team 1: -0.17
+Mean Reward Team 2: -0.31
+Mean Total Reward: -0.96, Mean Episode Length 1500.0
+[<mappo.ppo_model.Opponent object at 0x0000015E72810D90>, <mappo.ppo_model.Opponent object at 0x0000015E72810E20>]
+4 / 5 epochs done
+[34m[1mwandb[39m[22m: [33mWARNING[39m Step only supports monotonically increasing values, use define_metric to set a custom x axis. For details see: https://wandb.me/define-metric
+[34m[1mwandb[39m[22m: [33mWARNING[39m (User provided step: 4 is less than current step: 5000. Dropping entry: {'Mean-Max Reward': 0.5195499658584595, '_timestamp': 1701729121.1595173}).
+[1mEpisode 5 - Mean Max Reward: 0.42
+Mean Reward Agent_0: -0.14, Mean Reward Agent_1: -0.14,
+Mean Reward Team 1: -0.14
+Mean Reward Team 2: -0.25
+Mean Total Reward: -0.77, Mean Episode Length 1500.0
+[<mappo.ppo_model.Opponent object at 0x0000015E7277C310>, <mappo.ppo_model.Opponent object at 0x0000015E72810D30>]
+5 / 5 epochs done

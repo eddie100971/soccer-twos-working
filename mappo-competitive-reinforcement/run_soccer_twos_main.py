@@ -11,6 +11,7 @@ from nashpy import Game
 import torch
 import sys  
 import os
+import wandb
 
 device = torch.device('cpu')
 #'cuda:0' if torch.cuda.is_available() else 
@@ -60,7 +61,8 @@ def create_agent(state_size, action_size, actor_fc1_units=512,
                  actor_fc2_units=256, actor_lr=1e-4, critic_fc1_units=512,
                  critic_fc2_units=256, critic_lr=1e-4, gamma=0.99,
                  num_updates=10, max_eps_length=1500, eps_clip=0.3,
-                 critic_loss=0.5, entropy_bonus=0.01, batch_size=256, agent_ix = 0):
+                 critic_loss=0.5, entropy_bonus=0.01, batch_size=256, agent_ix = 0, 
+                 use_sd=False, sd_delta=.5):
     """
     This function creates an agent with specified parameters for training.
 
@@ -133,7 +135,9 @@ def create_agent(state_size, action_size, actor_fc1_units=512,
         entropy_bonus=entropy_bonus,
         batch_size=batch_size,
         actor_optimizer=actor_optimizer,
-        critic_optimizer=critic_optimizer
+        critic_optimizer=critic_optimizer,
+        use_sd=use_sd,
+        sd_delta=sd_delta
     )
 
     return agent
@@ -230,7 +234,7 @@ def train_agents(env, trainer, n_episodes=100, target_score=0.5,
     trainer.save()
 
 def train_agents_sp(env, trainer, n_episodes=100, target_score=0.5,
-                score_window_size=100, epochs = 5):
+                score_window_size=100, epochs = 85):
     """
     This function carries out the training process with specified trainer.
 
@@ -288,7 +292,7 @@ class PSRO(MAPPOTrainer):
         self.utilities = [[]]
 
         self.agent_args = (336, 3)
-        self.rollout_length = 10
+        self.rollout_length = 100
 
 
 
@@ -299,7 +303,7 @@ class PSRO(MAPPOTrainer):
         Returns:
             utility: average utility of each episode
         """
-
+        
         # Initialize list to hold reward values at each timestep.
         utility = 0
 
@@ -325,21 +329,23 @@ class PSRO(MAPPOTrainer):
                 #instantiate current team
                 self.agents = (create_agent(*self.agent_args, agent_ix=0), create_agent(*self.agent_args, agent_ix=1))
                 ## rollouts
-                nash = Game(np.array([np.array(self.utilities[j]) for j in range(len(self.utilities))])).support_enumeration().__next__()[0]
-                dis = torch.distributions.Categorical(torch.tensor(nash))
+                nash = Game(np.array([np.array(self.utilities[j]) for j in range(len(self.utilities))])).support_enumeration().__next__()
+                dis = (torch.distributions.Categorical(torch.tensor(nash[0])), torch.distributions.Categorical(torch.tensor(nash[1])))
                 for j in range(self.rollout_length):
                     #sample opponent policy
                     #print(self.utilities)
                     #print(np.asarray([np.array(self.utilities[i]) for i in range(len(self.utilities))]))
                     #replace self.utilities with this:
-                    self.opponents = populations[~i][dis.sample()] # samples a policy from the opponent
+                    self.opponents = populations[~i][dis[i].sample()] # samples a policy from the opponent
                     #runs and trains the episode
                     self.step()
 
                 ##add policy to population
                 population.append(self.agents)
+                self.print_status()
 
-
+            print("Udating Utilit Table")
+            print("Epoch:", _+1)
             ## Update Utility Table
             for i in range(len(self.population1)):
                 self.agents = self.population1[i]
@@ -350,15 +356,17 @@ class PSRO(MAPPOTrainer):
                     elif len(self.utilities[i]) == j: # existing row
                         self.utilities[i].append(self.rollout())
             
-            print("Epoch:", _)
             for i in self.utilities:
                 print(i)
-
-        return Game(np.array([np.array(self.utilities[i]) for i in range(len(self.utilities))])).support_enumeration().__next__()[0]
+        return Game(np.array([np.array(self.utilities[i]) for i in range(len(self.utilities))])).support_enumeration().__next__()
 
 
 
 if __name__ == '__main__':
+    wandb.login()
+    run = wandb.init(project="soccerTwos")
+    # Set the project where this run will be logged
+    # Track hyperparameters and run metadata
 
     # Initialize environment, extract state/action dimensions and num agents.
     env, num_agents, state_size, action_size = load_env(os.getcwd())
@@ -366,12 +374,14 @@ if __name__ == '__main__':
     # Initialize agents for training.
     #agents = [create_agent(state_size, action_size, agent_ix=_) for _ in range(num_agents)]
     #opponents = [create_opponent(state_size, action_size, epoch=None, agent_ix=i) for i in range(num_agents)]
-    agents = [create_agent(state_size, action_size, agent_ix=_) for _ in range(2)]
+    agents = [create_agent(state_size, action_size, agent_ix=_, use_sd=True, sd_delta=.25) for _ in range(2)]
     opponents = [create_opponent(state_size, action_size, epoch=None, agent_ix=i) for i in range(2,4)]
     # Create MAPPOTrainer object to train agents.
     save_dir = os.path.join(os.getcwd(), r'saved_files')
-    trainer = create_trainer(env, agents, opponents, save_dir, state_size, action_size, use_PSRO=True)
+    trainer = create_trainer(env, agents, opponents, save_dir, state_size, action_size, use_PSRO=False)
 
     # Train agent in specified environment.
-    #train_agents_sp(env, trainer, n_episodes=1)
-    trainer.run(1)
+    train_agents_sp(env, trainer, n_episodes=100)
+    #print(trainer.run(6))
+    print("Finished Training")
+    

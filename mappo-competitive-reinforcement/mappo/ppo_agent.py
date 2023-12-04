@@ -2,8 +2,8 @@ from torch.utils.data import DataLoader
 from torch.utils.data import Dataset
 import torch
 import os
-
-
+import json
+import wandb
 class Memory:
     """Memory object which stores past data for experiential learning."""
 
@@ -169,11 +169,11 @@ class PPOAgent:
                     condition = 1
                 else:
                     condition = 0
-                sd_indicator = condition * torch.ones(sd_indicator.size(), device=torch.device('cuda')) + (1-condition) * sd_indicator
+                sd_indicator = condition * torch.ones(sd_indicator.size(), device=torch.device('cpu')) + (1-condition) * sd_indicator
             l1 = (-torch.sum(torch.min(surr1, surr2),
                                              dim=-1,
                                              keepdim=True) * sd_indicator).sum() / (sd_indicator.sum() + 1e-8)
-            l2 = l2 * condition
+            l2 = l2 * sd_indicator
 
         ##### COMPUTE VARIANCE
         min_surr = torch.min(surr1, surr2) # should this be max? i'm not 100% sure
@@ -199,9 +199,9 @@ class PPOAgent:
         self.actor_optimizer.step()
         self.critic_optimizer.step()
 
-        return std * std
+        return std * std, loss1
 
-    def update(self):
+    def update(self, agent_num, curr_timestep):
         """Carries out updates on Actor/Critic Networks utilizing Memory."""
 
         # Calculate and normalize Monte Carlo estimates of state rewards.
@@ -219,21 +219,25 @@ class PPOAgent:
                                     old_log_probs, rewards)
         data_loader = DataLoader(dataset, batch_size=self.batch_size,
                                  shuffle=True)
-
+        variance_total = 0
+        policy_total = 0
+        total_calls = self.num_updates * len(data_loader)
         # Update Actor/Critic networks num_updates number of times.
         for _ in range(self.num_updates):
             for old_states_batch, old_actions_batch, old_log_probs_batch, \
                     rewards_batch in data_loader:
-                variance = self.update_batch(
+                variance, policy_loss = self.update_batch(
                     old_states=old_states_batch,
                     old_actions=old_actions_batch,
                     old_log_probs=old_log_probs_batch,
                     rewards=rewards_batch
                 )
-                with open((r"C:\dev2\soccer-twos-working\saved_files\variance.txt"), "a") as f:
-                    f.write(f"{variance.item()}" + "\n")
-
-
+                variance_total += variance.item()
+                policy_total += policy_loss.item()
+        print("Trying to log variance and policyloss")
+        data = {f"Agent {agent_num} Variance":variance_total/total_calls, f"Agent {agent_num} Policy_Loss":policy_total/total_calls}       
+        wandb.log(data, curr_timestep)
+        
         # Update old Actor/Critic networks to match current ones.
         self.actor_critic_old.load_state_dict(self.actor_critic.state_dict())
 

@@ -1,0 +1,273 @@
+2023-12-04 14:31:06,208 INFO    StreamThr :27976 [internal.py:wandb_internal():86] W&B internal server running at pid: 27976, started at: 2023-12-04 14:31:06.208114
+2023-12-04 14:31:06,210 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status
+2023-12-04 14:31:06,215 INFO    WriterThread:27976 [datastore.py:open_for_write():85] open: C:\dev2\soccer-twos-working\wandb\run-20231204_143106-5kq8zxih\run-5kq8zxih.wandb
+2023-12-04 14:31:06,216 DEBUG   SenderThread:27976 [sender.py:send():380] send: header
+2023-12-04 14:31:06,270 DEBUG   SenderThread:27976 [sender.py:send():380] send: run
+2023-12-04 14:31:06,586 INFO    SenderThread:27976 [dir_watcher.py:__init__():211] watching files in: C:\dev2\soccer-twos-working\wandb\run-20231204_143106-5kq8zxih\files
+2023-12-04 14:31:06,587 INFO    SenderThread:27976 [sender.py:_start_run_threads():1124] run started: 5kq8zxih with start time 1701729066.210104
+2023-12-04 14:31:06,599 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: check_version
+2023-12-04 14:31:06,600 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: check_version
+2023-12-04 14:31:06,678 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: run_start
+2023-12-04 14:31:06,699 DEBUG   HandlerThread:27976 [system_info.py:__init__():32] System info init
+2023-12-04 14:31:06,699 DEBUG   HandlerThread:27976 [system_info.py:__init__():47] System info init done
+2023-12-04 14:31:06,699 INFO    HandlerThread:27976 [system_monitor.py:start():194] Starting system monitor
+2023-12-04 14:31:06,699 INFO    SystemMonitor:27976 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2023-12-04 14:31:06,700 INFO    HandlerThread:27976 [system_monitor.py:probe():214] Collecting system info
+2023-12-04 14:31:06,704 INFO    SystemMonitor:27976 [interfaces.py:start():190] Started cpu monitoring
+2023-12-04 14:31:06,705 INFO    SystemMonitor:27976 [interfaces.py:start():190] Started disk monitoring
+2023-12-04 14:31:06,706 INFO    SystemMonitor:27976 [interfaces.py:start():190] Started gpu monitoring
+2023-12-04 14:31:06,707 INFO    SystemMonitor:27976 [interfaces.py:start():190] Started memory monitoring
+2023-12-04 14:31:06,715 INFO    SystemMonitor:27976 [interfaces.py:start():190] Started network monitoring
+2023-12-04 14:31:06,716 DEBUG   HandlerThread:27976 [system_info.py:probe():196] Probing system
+2023-12-04 14:31:06,718 DEBUG   HandlerThread:27976 [system_info.py:_probe_git():181] Probing git
+2023-12-04 14:31:06,846 DEBUG   HandlerThread:27976 [system_info.py:_probe_git():189] Probing git done
+2023-12-04 14:31:06,847 DEBUG   HandlerThread:27976 [system_info.py:probe():244] Probing system done
+2023-12-04 14:31:06,847 DEBUG   HandlerThread:27976 [system_monitor.py:probe():223] {'os': 'Windows-10-10.0.19045-SP0', 'python': '3.10.0', 'heartbeatAt': '2023-12-04T22:31:06.716700', 'startedAt': '2023-12-04T22:31:06.199127', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': 'c:\\dev2\\soccer-twos-working\\mappo-competitive-reinforcement\\run_soccer_twos_main.py', 'codePathLocal': 'mappo-competitive-reinforcement\\run_soccer_twos_main.py', 'codePath': 'mappo-competitive-reinforcement\\run_soccer_twos_main.py', 'git': {'remote': 'https://github.com/eddie100971/soccer-twos-working.git', 'commit': '5abd8f2b1696956443459e9f7d5b35f64ddd5009'}, 'email': 'egatchal@uci.edu', 'root': 'C:/dev2/soccer-twos-working', 'host': 'DESKTOP-2BQT21Q', 'username': 'ericg', 'executable': 'C:\\Users\\ericg\\AppData\\Local\\Programs\\Python\\Python310\\python.exe', 'cpu_count': 4, 'cpu_count_logical': 8, 'cpu_freq': {'current': 3601.0, 'min': 0.0, 'max': 3601.0}, 'cpu_freq_per_core': [{'current': 3601.0, 'min': 0.0, 'max': 3601.0}], 'disk': {'/': {'total': 930.3854827880859, 'used': 848.90478515625}}, 'gpu': 'NVIDIA GeForce GTX 1060 3GB', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce GTX 1060 3GB', 'memory_total': 3221225472}], 'memory': {'total': 23.962787628173828}}
+2023-12-04 14:31:06,847 INFO    HandlerThread:27976 [system_monitor.py:probe():224] Finished collecting system info
+2023-12-04 14:31:06,847 INFO    HandlerThread:27976 [system_monitor.py:probe():227] Publishing system info
+2023-12-04 14:31:06,847 DEBUG   HandlerThread:27976 [system_info.py:_save_pip():52] Saving list of pip packages installed into the current environment
+2023-12-04 14:31:06,848 DEBUG   HandlerThread:27976 [system_info.py:_save_pip():68] Saving pip packages done
+2023-12-04 14:31:06,849 INFO    HandlerThread:27976 [system_monitor.py:probe():229] Finished publishing system info
+2023-12-04 14:31:06,865 DEBUG   SenderThread:27976 [sender.py:send():380] send: files
+2023-12-04 14:31:06,865 INFO    SenderThread:27976 [sender.py:_save_file():1380] saving file wandb-metadata.json with policy now
+2023-12-04 14:31:06,874 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:31:06,874 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:31:06,875 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:31:07,004 DEBUG   SenderThread:27976 [sender.py:send():380] send: telemetry
+2023-12-04 14:31:07,348 INFO    wandb-upload_0:27976 [upload_job.py:push():131] Uploaded file C:\Users\ericg\AppData\Local\Temp\tmpubhf_0iowandb\3cbvegk4-wandb-metadata.json
+2023-12-04 14:31:07,592 INFO    Thread-16 :27976 [dir_watcher.py:_on_file_created():271] file/dir created: C:\dev2\soccer-twos-working\wandb\run-20231204_143106-5kq8zxih\files\requirements.txt
+2023-12-04 14:31:07,593 INFO    Thread-16 :27976 [dir_watcher.py:_on_file_created():271] file/dir created: C:\dev2\soccer-twos-working\wandb\run-20231204_143106-5kq8zxih\files\wandb-metadata.json
+2023-12-04 14:31:07,593 INFO    Thread-16 :27976 [dir_watcher.py:_on_file_created():271] file/dir created: C:\dev2\soccer-twos-working\wandb\run-20231204_143106-5kq8zxih\files\output.log
+2023-12-04 14:31:09,613 INFO    Thread-16 :27976 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_143106-5kq8zxih\files\output.log
+2023-12-04 14:31:11,633 INFO    Thread-16 :27976 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_143106-5kq8zxih\files\output.log
+2023-12-04 14:31:11,695 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:31:16,743 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:31:17,638 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:31:19,710 INFO    Thread-16 :27976 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_143106-5kq8zxih\files\output.log
+2023-12-04 14:31:21,743 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:31:21,871 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:31:21,872 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:31:21,872 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:31:27,084 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:31:29,330 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:31:29,332 DEBUG   SenderThread:27976 [sender.py:send():380] send: history
+2023-12-04 14:31:29,332 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: summary_record
+2023-12-04 14:31:29,334 INFO    SenderThread:27976 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-12-04 14:31:29,808 INFO    Thread-16 :27976 [dir_watcher.py:_on_file_created():271] file/dir created: C:\dev2\soccer-twos-working\wandb\run-20231204_143106-5kq8zxih\files\wandb-summary.json
+2023-12-04 14:31:31,821 INFO    Thread-16 :27976 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_143106-5kq8zxih\files\output.log
+2023-12-04 14:31:32,403 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:31:36,867 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:31:36,868 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:31:36,883 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:31:37,959 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:31:38,871 INFO    Thread-16 :27976 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_143106-5kq8zxih\files\config.yaml
+2023-12-04 14:31:41,889 INFO    Thread-16 :27976 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_143106-5kq8zxih\files\output.log
+2023-12-04 14:31:42,017 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:31:42,017 DEBUG   SenderThread:27976 [sender.py:send():380] send: history
+2023-12-04 14:31:42,018 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: summary_record
+2023-12-04 14:31:42,018 INFO    SenderThread:27976 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-12-04 14:31:42,897 INFO    Thread-16 :27976 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_143106-5kq8zxih\files\wandb-summary.json
+2023-12-04 14:31:43,911 INFO    Thread-16 :27976 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_143106-5kq8zxih\files\output.log
+2023-12-04 14:31:44,084 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:31:49,120 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:31:49,324 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:31:49,325 DEBUG   SenderThread:27976 [sender.py:send():380] send: history
+2023-12-04 14:31:49,325 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: summary_record
+2023-12-04 14:31:49,327 INFO    SenderThread:27976 [sender.py:_save_file():1380] saving file wandb-summary.json with policy end
+2023-12-04 14:31:49,960 INFO    Thread-16 :27976 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_143106-5kq8zxih\files\wandb-summary.json
+2023-12-04 14:31:49,960 INFO    Thread-16 :27976 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_143106-5kq8zxih\files\output.log
+2023-12-04 14:31:51,874 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:31:51,875 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:31:51,889 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:31:53,013 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:31:53,987 INFO    Thread-16 :27976 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_143106-5kq8zxih\files\output.log
+2023-12-04 14:31:55,031 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:32:00,098 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:32:01,159 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:32:02,086 INFO    Thread-16 :27976 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_143106-5kq8zxih\files\output.log
+2023-12-04 14:32:05,236 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:32:06,721 DEBUG   SystemMonitor:27976 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2023-12-04 14:32:06,722 DEBUG   SenderThread:27976 [sender.py:send():380] send: stats
+2023-12-04 14:32:06,876 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:32:06,877 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:32:06,892 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:32:08,156 INFO    Thread-16 :27976 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_143106-5kq8zxih\files\output.log
+2023-12-04 14:32:11,045 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:32:14,601 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-04 14:32:16,259 INFO    Thread-16 :27976 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_143106-5kq8zxih\files\output.log
+2023-12-04 14:32:16,654 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:32:21,703 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:32:21,894 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:32:21,894 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:32:21,909 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:32:24,330 INFO    Thread-16 :27976 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\dev2\soccer-twos-working\wandb\run-20231204_143106-5kq8zxih\files\output.log
+2023-12-04 14:32:27,207 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:32:32,242 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:32:36,731 DEBUG   SenderThread:27976 [sender.py:send():380] send: stats
+2023-12-04 14:32:36,904 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:32:36,904 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:32:36,921 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:32:38,084 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:32:43,114 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:32:48,156 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:32:51,910 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:32:51,911 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:32:51,927 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:32:54,059 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:32:59,095 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:33:04,105 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:33:06,742 DEBUG   SenderThread:27976 [sender.py:send():380] send: stats
+2023-12-04 14:33:06,915 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:33:06,916 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:33:06,930 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:33:10,049 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:33:15,076 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:33:20,105 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:33:21,924 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:33:21,925 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:33:21,941 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:33:26,098 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:33:31,149 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:33:36,175 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:33:36,756 DEBUG   SenderThread:27976 [sender.py:send():380] send: stats
+2023-12-04 14:33:36,939 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:33:36,939 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:33:36,956 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:33:42,151 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:33:47,179 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:33:51,953 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:33:51,953 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:33:51,969 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:33:53,124 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:33:58,184 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:34:03,208 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:34:06,760 DEBUG   SenderThread:27976 [sender.py:send():380] send: stats
+2023-12-04 14:34:06,962 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:34:06,963 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:34:06,979 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:34:09,115 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:34:14,151 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:34:19,200 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:34:21,970 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:34:21,971 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:34:21,986 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:34:25,142 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:34:30,181 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:34:35,219 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:34:36,765 DEBUG   SenderThread:27976 [sender.py:send():380] send: stats
+2023-12-04 14:34:36,983 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:34:36,984 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:34:36,999 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:34:41,168 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:34:46,205 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:34:51,244 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:34:51,986 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:34:51,986 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:34:51,987 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:34:57,166 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:35:02,197 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:35:06,771 DEBUG   SenderThread:27976 [sender.py:send():380] send: stats
+2023-12-04 14:35:06,990 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:35:07,007 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:35:07,007 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:35:08,200 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:35:13,246 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:35:18,277 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:35:21,997 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:35:22,029 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:35:22,029 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:35:24,151 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:35:29,173 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:35:34,211 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:35:36,781 DEBUG   SenderThread:27976 [sender.py:send():380] send: stats
+2023-12-04 14:35:36,999 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:35:37,045 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:35:37,046 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:35:40,179 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:35:45,219 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:35:50,264 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:35:52,006 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:35:52,037 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:35:52,037 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:35:56,193 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:36:01,238 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:36:06,292 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:36:06,800 DEBUG   SenderThread:27976 [sender.py:send():380] send: stats
+2023-12-04 14:36:07,016 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:36:07,055 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:36:07,055 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:36:12,195 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:36:17,234 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:36:22,012 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:36:22,060 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:36:22,060 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:36:23,237 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:36:28,288 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:36:33,328 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:36:36,813 DEBUG   SenderThread:27976 [sender.py:send():380] send: stats
+2023-12-04 14:36:37,015 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:36:37,062 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:36:37,063 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:36:39,238 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:36:44,268 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:36:49,321 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:36:52,014 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:36:52,075 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:36:52,076 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:36:55,223 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:37:00,262 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:37:05,295 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:37:06,825 DEBUG   SenderThread:27976 [sender.py:send():380] send: stats
+2023-12-04 14:37:07,028 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:37:07,075 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:37:07,075 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:37:11,193 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:37:16,234 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:37:21,264 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:37:22,041 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:37:22,073 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:37:22,074 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:37:27,235 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:37:32,262 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:37:36,838 DEBUG   SenderThread:27976 [sender.py:send():380] send: stats
+2023-12-04 14:37:37,054 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:37:37,087 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:37:37,087 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:37:38,214 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:37:43,244 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:37:48,289 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:37:52,058 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:37:52,089 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:37:52,090 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:37:54,230 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:37:59,276 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:38:04,335 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:38:06,852 DEBUG   SenderThread:27976 [sender.py:send():380] send: stats
+2023-12-04 14:38:07,068 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:38:07,083 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:38:07,084 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:38:10,302 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:38:15,352 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:38:20,397 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:38:22,070 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:38:22,102 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:38:22,102 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:38:26,238 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:38:31,290 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:38:36,343 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:38:36,856 DEBUG   SenderThread:27976 [sender.py:send():380] send: stats
+2023-12-04 14:38:37,086 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:38:37,116 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:38:37,117 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:38:42,252 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:38:47,290 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:38:52,095 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:38:52,126 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:38:52,127 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
+2023-12-04 14:38:53,234 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:38:58,273 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:39:03,305 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: status_report
+2023-12-04 14:39:06,867 DEBUG   SenderThread:27976 [sender.py:send():380] send: stats
+2023-12-04 14:39:07,104 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-04 14:39:07,134 DEBUG   HandlerThread:27976 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-04 14:39:07,134 DEBUG   SenderThread:27976 [sender.py:send_request():407] send_request: stop_status
