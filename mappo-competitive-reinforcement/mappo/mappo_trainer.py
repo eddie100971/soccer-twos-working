@@ -116,12 +116,25 @@ class MAPPOTrainer:
             # get actions of the opponent
             for agent,state in zip(self.opponents, states):
                 #print(agent.get_actions(torch.from_numpy(state).float()))
-                actions.append(agent.get_actions(torch.from_numpy(state).float()))
+                actions.append(agent.get_actions(torch.from_numpy(state).float())[0])
             
             # Convert action tensors to integer values.
-            raw_actions = np.array(
-                [torch.clamp(a, -1, 1).numpy() for a in actions]
-            )
+            try:
+                raw_actions = np.array(
+                    [torch.clamp(a, -1, 1).numpy() for a in actions]
+                )
+            except:
+                print(self.opponents)
+                print(len(self.opponents))
+                print()
+                print(actions)
+                print(len(actions))
+                print()
+                print(self.agents)
+                print(len(self.agents))
+                print()
+
+                raise Exception
 
             # Realize sampled actions in environment and evaluate new state.
             

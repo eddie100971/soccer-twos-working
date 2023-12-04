@@ -230,7 +230,7 @@ def train_agents(env, trainer, n_episodes=100, target_score=0.5,
     trainer.save()
 
 def train_agents_sp(env, trainer, n_episodes=100, target_score=0.5,
-                score_window_size=100, epochs = 100):
+                score_window_size=100, epochs = 5):
     """
     This function carries out the training process with specified trainer.
 
@@ -288,7 +288,7 @@ class PSRO(MAPPOTrainer):
         self.utilities = [[]]
 
         self.agent_args = (336, 3)
-        self.rollout_length = 1
+        self.rollout_length = 10
 
 
 
@@ -318,22 +318,22 @@ class PSRO(MAPPOTrainer):
                     self.utilities[i].append(self.rollout())
                 else:
                     self.utilities.append([self.rollout()])
-    
+
+        populations = (self.population1, self.population2)
         for _ in range(epochs):
-            for population in (self.population1, self.population2):
+            for i, population in enumerate(populations):
                 #instantiate current team
                 self.agents = (create_agent(*self.agent_args, agent_ix=0), create_agent(*self.agent_args, agent_ix=1))
-
                 ## rollouts
-                for i in range(self.rollout_length):
+                nash = Game(np.array([np.array(self.utilities[j]) for j in range(len(self.utilities))])).support_enumeration().__next__()[0]
+                dis = torch.distributions.Categorical(torch.tensor(nash))
+                for j in range(self.rollout_length):
                     #sample opponent policy
                     #print(self.utilities)
                     #print(np.asarray([np.array(self.utilities[i]) for i in range(len(self.utilities))]))
                     #replace self.utilities with this:
-                    nash = Game(np.array([np.array(self.utilities[i]) for i in range(len(self.utilities))])).support_enumeration().__next__()[0]
-                    dis = torch.distributions.Categorical(torch.tensor(nash))
-                    self.opponents = (self.opponents[dis.sample()], self.opponents[dis.sample()])
-                    #train current team against opponent policy\
+                    self.opponents = populations[~i][dis.sample()] # samples a policy from the opponent
+                    #runs and trains the episode
                     self.step()
 
                 ##add policy to population
@@ -349,11 +349,12 @@ class PSRO(MAPPOTrainer):
                         self.utilities.append([self.rollout()])
                     elif len(self.utilities[i]) == j: # existing row
                         self.utilities[i].append(self.rollout())
+            
             print("Epoch:", _)
             for i in self.utilities:
                 print(i)
 
-            return Game(np.array([np.array(self.utilities[i]) for i in range(len(self.utilities))])).support_enumeration().__next__()[0]
+        return Game(np.array([np.array(self.utilities[i]) for i in range(len(self.utilities))])).support_enumeration().__next__()[0]
 
 
 
@@ -363,13 +364,14 @@ if __name__ == '__main__':
     env, num_agents, state_size, action_size = load_env(os.getcwd())
     print(state_size, action_size)
     # Initialize agents for training.
-    agents = [create_agent(state_size, action_size, agent_ix=_) for _ in range(num_agents)]
-    opponents = [create_opponent(state_size, action_size, epoch=None, agent_ix=i) for i in range(num_agents)]
-
+    #agents = [create_agent(state_size, action_size, agent_ix=_) for _ in range(num_agents)]
+    #opponents = [create_opponent(state_size, action_size, epoch=None, agent_ix=i) for i in range(num_agents)]
+    agents = [create_agent(state_size, action_size, agent_ix=_) for _ in range(2)]
+    opponents = [create_opponent(state_size, action_size, epoch=None, agent_ix=i) for i in range(2,4)]
     # Create MAPPOTrainer object to train agents.
     save_dir = os.path.join(os.getcwd(), r'saved_files')
-    trainer = create_trainer(env, agents, opponents, save_dir, state_size, action_size, use_PSRO=False)
+    trainer = create_trainer(env, agents, opponents, save_dir, state_size, action_size, use_PSRO=True)
 
     # Train agent in specified environment.
-    train_agents_sp(env, trainer, n_episodes=1)
-    #trainer.run(1)
+    #train_agents_sp(env, trainer, n_episodes=1)
+    trainer.run(1)

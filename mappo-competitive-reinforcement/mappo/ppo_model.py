@@ -39,16 +39,16 @@ class Opponent:
 
     def get_actions(self, state):
         if self.path_empty:
-            return torch.tensor([0,0,0])
+            return torch.tensor([0,0,0]), 0
         else:
             action_mu, action_sigma = self.actor(torch.tensor(state))
             sigma = action_sigma.expand_as(action_mu)
             dist = Normal(action_mu, sigma)
             # Sample action value from generated distribution.
             action = dist.sample()
-            #print(action)
-            #print(torch.tensor(action))
-        return torch.tensor(action)
+            log_prob = dist.log_prob(action).sum(-1).reshape(-1)
+            
+        return torch.tensor(action), log_prob
     
     def child(self, path):
         return Opponent(self.state_size, self.action_size, self.fc1_units, self.fc2_units, path)
