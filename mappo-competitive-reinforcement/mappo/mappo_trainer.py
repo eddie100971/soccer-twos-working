@@ -98,7 +98,7 @@ class MAPPOTrainer:
 
         # Restart the environment and gather original states.
         states, rewards, dones, _ = self.reset_env()
-        
+        utilities = 0
         # Act and evaluate results and networks for each timestep.
         for t in range(self.max_episode_length):
             self.timestep += 1
@@ -112,10 +112,12 @@ class MAPPOTrainer:
                 processed_states.append(processed_state)
                 log_probs.append(log_prob)
                 actions.append(action)
-
+            
+            # get actions of the opponent
             for agent,state in zip(self.opponents, states):
-                actions.append(agent.get_actions(state))
-
+                #print(agent.get_actions(torch.from_numpy(state).float()))
+                actions.append(agent.get_actions(torch.from_numpy(state).float()))
+            
             # Convert action tensors to integer values.
             raw_actions = np.array(
                 [torch.clamp(a, -1, 1).numpy() for a in actions]
@@ -131,6 +133,9 @@ class MAPPOTrainer:
                     if v == -1.0:
                         if i == 2:
                             team = "01"
+                            utilities += 1
+                        else:
+                            utilities -= 1
                         goal_check = True
 
                 if goal_check:
@@ -154,7 +159,7 @@ class MAPPOTrainer:
 
             # Append reward gained for each new action.
             scores.append(rewards)    
-        return scores
+        return scores, utilities
 
     def step(self):
         """
@@ -164,7 +169,7 @@ class MAPPOTrainer:
 
         # Run a single episode in environment.
         self.i_episode += 1
-        scores = self.run_episode()
+        scores, utility = self.run_episode()
 
         # Sum the episode rewards for each agent to get the total rewards.
         score_by_agent = np.sum(scores, axis=0)
@@ -172,6 +177,7 @@ class MAPPOTrainer:
         # Store total rewards and episode lengths.
         self.score_history.append(score_by_agent)
         self.episode_length_history.append(len(scores))
+        return utility
 
     def save(self):
         """

@@ -230,7 +230,7 @@ class PPOAgent:
                     old_log_probs=old_log_probs_batch,
                     rewards=rewards_batch
                 )
-                with open((r"C:\dev\soccer-twos-working\saved_files\variance.txt"), "a") as f:
+                with open((r"C:\dev2\soccer-twos-working\saved_files\variance.txt"), "a") as f:
                     f.write(f"{variance.item()}" + "\n")
 
 

@@ -46,8 +46,9 @@ class Opponent:
             dist = Normal(action_mu, sigma)
             # Sample action value from generated distribution.
             action = dist.sample()
-
-        return action
+            #print(action)
+            #print(torch.tensor(action))
+        return torch.tensor(action)
     
     def child(self, path):
         return Opponent(self.state_size, self.action_size, self.fc1_units, self.fc2_units, path)
