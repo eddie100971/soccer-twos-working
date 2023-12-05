@@ -294,6 +294,8 @@ class PSRO(MAPPOTrainer):
         self.agent_args = (336, 3)
         self.rollout_length = 100
 
+        self.benchmark = (create_opponent(state_size, action_size, epoch=8500, agent_ix=i) for i in range(2,4))
+
 
 
     def rollout(self) -> int: # gets utility of two policies
@@ -358,6 +360,21 @@ class PSRO(MAPPOTrainer):
             
             for i in self.utilities:
                 print(i)
+
+            #benchmarking current populations
+            nash = Game(np.array([np.array(self.utilities[j]) for j in range(len(self.utilities))])).support_enumeration().__next__()
+            dis = (torch.distributions.Categorical(torch.tensor(nash[0])), torch.distributions.Categorical(torch.tensor(nash[1])))
+            self.agents = self.population1[dis[0].sample()]
+            self.opponents = self.benchmark
+            benchmark1 = self.rollout()
+            self.print_status(benchmark=True, team=1)
+
+            self.agents = self.population2[dis[1].sample()]
+            self.opponents = self.benchmark
+            benchmark2 = self.rollout(benchmark=True, team=2)
+
+
+
         return Game(np.array([np.array(self.utilities[i]) for i in range(len(self.utilities))])).support_enumeration().__next__()
 
 
@@ -374,7 +391,7 @@ if __name__ == '__main__':
     # Initialize agents for training.
     #agents = [create_agent(state_size, action_size, agent_ix=_) for _ in range(num_agents)]
     #opponents = [create_opponent(state_size, action_size, epoch=None, agent_ix=i) for i in range(num_agents)]
-    agents = [create_agent(state_size, action_size, agent_ix=_, use_sd=True, sd_delta=.25) for _ in range(2)]
+    agents = [create_agent(state_size, action_size, agent_ix=_, use_sd=False, sd_delta=.25) for _ in range(2)]
     opponents = [create_opponent(state_size, action_size, epoch=None, agent_ix=i) for i in range(2,4)]
     # Create MAPPOTrainer object to train agents.
     save_dir = os.path.join(os.getcwd(), r'saved_files')

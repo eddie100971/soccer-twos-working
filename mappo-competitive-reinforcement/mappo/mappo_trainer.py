@@ -195,7 +195,7 @@ class MAPPOTrainer:
             torch.save(critic_state_dict, os.path.join(self.save_dir, "critic_" + filename))
 
 
-    def print_status(self):
+    def print_status(self, benchmark=False, team=None):
         """Prints reward info and episode length stats at current episode."""
 
         # Calculate necessary statistics.
@@ -223,12 +223,15 @@ class MAPPOTrainer:
             f'Mean Total Reward: {mean_reward.sum():.2f}, '
             f'Mean Episode Length {mean_eps_len:.1f}\n'
         )
-        save_data = {"Mean-Max Reward": float(max_mean)}
+        if(benchmark):
+            save_data = {f"Team {team} Mean-Max Reward (Benchmark)": float(max_mean)}
+        else:
+            save_data = {"Mean-Max Reward": float(max_mean)}
         wandb.log(save_data, self.timestep)
 
-        save_data = {"Mean-Max Reward": max_mean, "Episode": self.i_episode}
-        with open((r"C:\dev\soccer-twos-working\saved_files\run_data.json"), "a") as f:
-            json.dump(save_data, f)
+        # save_data = {"Mean-Max Reward": max_mean, "Episode": self.i_episode}
+        # with open((r"C:\dev\soccer-twos-working\saved_files\run_data.json"), "a") as f:
+        #     json.dump(save_data, f)
 
     def plot(self):
         """
