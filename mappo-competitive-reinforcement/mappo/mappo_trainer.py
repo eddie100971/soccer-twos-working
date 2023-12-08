@@ -164,7 +164,7 @@ class MAPPOTrainer:
             scores.append(rewards)    
         return scores, utilities
 
-    def step(self, train_agents=False):
+    def step(self, train_agents=True):
         """
         Initiates run of an episode and logs the resulting total rewards and
         episode lengths.

@@ -52,7 +52,7 @@ def load_env(env_loc):
 def create_opponent(state_size, action_size, actor_fc1_units=512,
                  actor_fc2_units=256, agent_ix=None, epoch=None, benchmark=False):
     if benchmark:
-        path = rf"C:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\saved_files\actor_agent_{agent_ix}_episode_8500.pth"
+        path = rf"C:\dev\soccer-twos-working\saved_files\actor_agent_{agent_ix}_episode_8500.pth"
     elif epoch is not None:
         path = os.path.join(os.getcwd(), "saved_files", f"actor_agent_{agent_ix}_episode_{epoch}.pth") 
     else:
@@ -422,17 +422,17 @@ if __name__ == '__main__':
     # Initialize agents for training.
     #agents = [create_agent(state_size, action_size, agent_ix=_) for _ in range(num_agents)]
     #opponents = [create_opponent(state_size, action_size, epoch=None, agent_ix=i) for i in range(num_agents)]
-    agents = [create_agent(state_size, action_size, agent_ix=_, use_sd=False, sd_delta=.25) for _ in range(2)]
+    agents = [create_agent(state_size, action_size, agent_ix=_, use_sd=True, sd_delta=.125) for _ in range(2)]
     opponents = [create_opponent(state_size, action_size, epoch=None, agent_ix=i) for i in range(2,4)]
     # Create MAPPOTrainer object to train agents.
     save_dir = os.path.join(os.getcwd(), r'saved_files')
     trainer = create_trainer(env, agents, opponents, save_dir, state_size, action_size, use_PSRO=True, update_frequency=1500)
 
-    trainer.run_eval(100)
+    # trainer.run_eval(100)
 
     # Train agent in specified environment.
     # train_agents_sp(env, trainer, n_episodes=100)
-    # print(trainer.run(6))
+    print(trainer.run(2))
     """
     NE's for PSRO with 6 epochs and 100 episodes per rollout: (array([0.24799487, 0.        , 0.04234841, 0.        , 0.08982996,
        0.61982676, 0.        ]), array([0.        , 0.        , 0.        , 0.02743022, 0.11982676,
