@@ -1,0 +1,232 @@
+INFO:mlagents_envs.environment:Connected to Unity environment with package version 2.1.0-exp.1 and communication version 1.5.0
+INFO:mlagents_envs.environment:Connected new brain: SoccerTwos?team=1
+INFO:mlagents_envs.environment:Connected new brain: SoccerTwos?team=0
+[INFO] Connected to Unity environment with package version 2.1.0-exp.1 and communication version 1.5.0
+[INFO] Connected new brain: SoccerTwos?team=1
+[INFO] Connected new brain: SoccerTwos?team=0
+Number of Agents: 4, State Size: 336, Action Size: 3
+Rollout 1/35 Time:  8.134284496307373
+[1mEpisode 2 - Mean Max Reward: 0.00
+Mean Reward Agent_0: 0.00, Mean Reward Agent_1: 0.00,
+Mean Reward Team 1: 0.00
+Mean Reward Team 2: 0.00
+Mean Total Reward: 0.00, Mean Episode Length 1500.0
+[1mEpisode 3 - Mean Max Reward: 0.00
+Mean Reward Agent_0: 0.00, Mean Reward Agent_1: 0.00,
+Mean Reward Team 1: 0.00
+Mean Reward Team 2: 0.00
+Mean Total Reward: 0.00, Mean Episode Length 1500.0
+Udating Utility Table
+Epoch: 1
+Rollout 2/35 Time:  9.397156715393066
+Rollout 3/35 Time:  8.27702283859253
+Rollout 4/35 Time:  9.778019666671753
+c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\mappo-competitive-reinforcement\mappo\ppo_model.py:44: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  action_mu, action_sigma = self.actor(torch.tensor(state))
+c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\mappo-competitive-reinforcement\mappo\ppo_model.py:51: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  return torch.tensor(action), log_prob
+[0.0, -1.0]
+[0.0, -1.0]
+benchmarking...
+[1mEpisode 7 - Mean Max Reward: 0.20
+Mean Reward Agent_0: -0.43, Mean Reward Agent_1: -0.43,
+Mean Reward Team 1: -0.43
+Mean Reward Team 2: 0.20
+Mean Total Reward: -0.46, Mean Episode Length 1500.0
+[1mEpisode 8 - Mean Max Reward: 0.20
+Mean Reward Agent_0: -0.35, Mean Reward Agent_1: -0.35,
+Mean Reward Team 1: -0.35
+Mean Reward Team 2: -0.07
+Mean Total Reward: -0.85, Mean Episode Length 1500.0
+[1mEpisode 9 - Mean Max Reward: 0.18
+Mean Reward Agent_0: -0.31, Mean Reward Agent_1: -0.31,
+Mean Reward Team 1: -0.31
+Mean Reward Team 2: -0.07
+Mean Total Reward: -0.75, Mean Episode Length 1500.0
+[1mEpisode 10 - Mean Max Reward: 0.16
+Mean Reward Agent_0: -0.28, Mean Reward Agent_1: -0.28,
+Mean Reward Team 1: -0.28
+Mean Reward Team 2: -0.06
+Mean Total Reward: -0.68, Mean Episode Length 1500.0
+Udating Utility Table
+Epoch: 2
+Rollout 5/35 Time:  9.49418830871582
+Rollout 6/35 Time:  9.446498155593872
+Rollout 7/35 Time:  8.128196239471436
+Rollout 8/35 Time:  10.19670557975769
+Rollout 9/35 Time:  9.664660692214966
+[0.0, -1.0, 0.0]
+[0.0, -1.0, -1.0]
+[-1.0, 1.0, -1.0]
+benchmarking...
+[1mEpisode 16 - Mean Max Reward: 0.27
+Mean Reward Agent_0: -0.33, Mean Reward Agent_1: -0.33,
+Mean Reward Team 1: -0.33
+Mean Reward Team 2: 0.01
+Mean Total Reward: -0.64, Mean Episode Length 1500.0
+[1mEpisode 17 - Mean Max Reward: 0.26
+Mean Reward Agent_0: -0.31, Mean Reward Agent_1: -0.31,
+Mean Reward Team 1: -0.31
+Mean Reward Team 2: 0.01
+Mean Total Reward: -0.60, Mean Episode Length 1500.0
+[1mEpisode 18 - Mean Max Reward: 0.27
+Mean Reward Agent_0: -0.27, Mean Reward Agent_1: -0.27,
+Mean Reward Team 1: -0.27
+Mean Reward Team 2: -0.04
+Mean Total Reward: -0.62, Mean Episode Length 1500.0
+[1mEpisode 19 - Mean Max Reward: 0.28
+Mean Reward Agent_0: -0.30, Mean Reward Agent_1: -0.30,
+Mean Reward Team 1: -0.30
+Mean Reward Team 2: -0.02
+Mean Total Reward: -0.66, Mean Episode Length 1500.0
+Udating Utility Table
+Epoch: 3
+Rollout 10/35 Time:  9.60141372680664
+Rollout 11/35 Time:  10.022062063217163
+Rollout 12/35 Time:  9.838547945022583
+Rollout 13/35 Time:  8.13164472579956
+Rollout 14/35 Time:  9.664849758148193
+Rollout 15/35 Time:  11.76911187171936
+Rollout 16/35 Time:  12.10718822479248
+[0.0, -1.0, 0.0, 2.0]
+[0.0, -1.0, -1.0, 1.0]
+[-1.0, 1.0, -1.0, 0.0]
+[0.0, 0.0, 0.0, 0.0]
+benchmarking...
+[1mEpisode 27 - Mean Max Reward: 0.29
+Mean Reward Agent_0: -0.23, Mean Reward Agent_1: -0.23,
+Mean Reward Team 1: -0.23
+Mean Reward Team 2: -0.11
+Mean Total Reward: -0.68, Mean Episode Length 1500.0
+[1mEpisode 28 - Mean Max Reward: 0.28
+Mean Reward Agent_0: -0.22, Mean Reward Agent_1: -0.22,
+Mean Reward Team 1: -0.22
+Mean Reward Team 2: -0.11
+Mean Total Reward: -0.66, Mean Episode Length 1500.0
+[1mEpisode 29 - Mean Max Reward: 0.29
+Mean Reward Agent_0: -0.28, Mean Reward Agent_1: -0.28,
+Mean Reward Team 1: -0.28
+Mean Reward Team 2: -0.08
+Mean Total Reward: -0.73, Mean Episode Length 1500.0
+[1mEpisode 30 - Mean Max Reward: 0.28
+Mean Reward Agent_0: -0.27, Mean Reward Agent_1: -0.27,
+Mean Reward Team 1: -0.27
+Mean Reward Team 2: -0.08
+Mean Total Reward: -0.70, Mean Episode Length 1500.0
+Udating Utility Table
+Epoch: 4
+Rollout 17/35 Time:  10.037197589874268
+Rollout 18/35 Time:  9.883540868759155
+Rollout 19/35 Time:  9.643753290176392
+Rollout 20/35 Time:  9.535959720611572
+Rollout 21/35 Time:  8.080272674560547
+Rollout 22/35 Time:  9.851045846939087
+Rollout 23/35 Time:  9.53499436378479
+Rollout 24/35 Time:  9.577451944351196
+Rollout 25/35 Time:  9.913043737411499
+[0.0, -1.0, 0.0, 2.0, 1.0]
+[0.0, -1.0, -1.0, 1.0, 0.0]
+[-1.0, 1.0, -1.0, 0.0, 0.0]
+[0.0, 0.0, 0.0, 0.0, 1.0]
+[2.0, 1.0, 0.0, 3.0, 1.0]
+benchmarking...
+[1mEpisode 40 - Mean Max Reward: 0.37
+Mean Reward Agent_0: -0.04, Mean Reward Agent_1: -0.04,
+Mean Reward Team 1: -0.04
+Mean Reward Team 2: -0.28
+Mean Total Reward: -0.65, Mean Episode Length 1500.0
+[1mEpisode 41 - Mean Max Reward: 0.36
+Mean Reward Agent_0: -0.04, Mean Reward Agent_1: -0.04,
+Mean Reward Team 1: -0.04
+Mean Reward Team 2: -0.28
+Mean Total Reward: -0.64, Mean Episode Length 1500.0
+[1mEpisode 42 - Mean Max Reward: 0.36
+Mean Reward Agent_0: -0.04, Mean Reward Agent_1: -0.04,
+Mean Reward Team 1: -0.04
+Mean Reward Team 2: -0.29
+Mean Total Reward: -0.66, Mean Episode Length 1500.0
+[1mEpisode 43 - Mean Max Reward: 0.37
+Mean Reward Agent_0: -0.06, Mean Reward Agent_1: -0.06,
+Mean Reward Team 1: -0.06
+Mean Reward Team 2: -0.27
+Mean Total Reward: -0.66, Mean Episode Length 1500.0
+Udating Utility Table
+Epoch: 5
+Rollout 26/35 Time:  9.51218295097351
+Rollout 27/35 Time:  9.972692728042603
+Rollout 28/35 Time:  9.491811990737915
+Rollout 29/35 Time:  9.456002950668335
+Rollout 30/35 Time:  9.46534538269043
+Rollout 31/35 Time:  8.009400606155396
+Rollout 32/35 Time:  9.494691848754883
+Rollout 33/35 Time:  9.46492624282837
+Rollout 34/35 Time:  9.4225594997406
+Rollout 35/35 Time:  9.453819274902344
+Rollout 36/35 Time:  9.557607889175415
+[0.0, -1.0, 0.0, 2.0, 1.0, -1.0]
+[0.0, -1.0, -1.0, 1.0, 0.0, -1.0]
+[-1.0, 1.0, -1.0, 0.0, 0.0, 0.0]
+[0.0, 0.0, 0.0, 0.0, 1.0, 0.0]
+[2.0, 1.0, 0.0, 3.0, 1.0, 0.0]
+[0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
+benchmarking...
+[1mEpisode 55 - Mean Max Reward: 0.31
+Mean Reward Agent_0: -0.07, Mean Reward Agent_1: -0.07,
+Mean Reward Team 1: -0.07
+Mean Reward Team 2: -0.24
+Mean Total Reward: -0.61, Mean Episode Length 1500.0
+[1mEpisode 56 - Mean Max Reward: 0.32
+Mean Reward Agent_0: -0.05, Mean Reward Agent_1: -0.05,
+Mean Reward Team 1: -0.05
+Mean Reward Team 2: -0.25
+Mean Total Reward: -0.61, Mean Episode Length 1500.0
+[1mEpisode 57 - Mean Max Reward: 0.31
+Mean Reward Agent_0: -0.05, Mean Reward Agent_1: -0.05,
+Mean Reward Team 1: -0.05
+Mean Reward Team 2: -0.25
+Mean Total Reward: -0.60, Mean Episode Length 1500.0
+[1mEpisode 58 - Mean Max Reward: 0.32
+Mean Reward Agent_0: -0.04, Mean Reward Agent_1: -0.04,
+Mean Reward Team 1: -0.04
+Mean Reward Team 2: -0.26
+Mean Total Reward: -0.60, Mean Episode Length 1500.0
+Udating Utility Table
+Epoch: 6
+Rollout 37/35 Time:  9.476381301879883
+Rollout 38/35 Time:  9.448821067810059
+Rollout 39/35 Time:  9.463477849960327
+Rollout 40/35 Time:  9.581934213638306
+Rollout 41/35 Time:  9.633593082427979
+Rollout 42/35 Time:  9.545696496963501
+Rollout 43/35 Time:  8.143101453781128
+Rollout 44/35 Time:  9.63762617111206
+Rollout 45/35 Time:  9.724645137786865
+Rollout 46/35 Time:  9.544054746627808
+Rollout 47/35 Time:  9.611082315444946
+Rollout 48/35 Time:  9.47854995727539
+Rollout 49/35 Time:  9.55173659324646
+[0.0, -1.0, 0.0, 2.0, 1.0, -1.0, 0.0]
+[0.0, -1.0, -1.0, 1.0, 0.0, -1.0, 0.0]
+[-1.0, 1.0, -1.0, 0.0, 0.0, 0.0, 0.0]
+[0.0, 0.0, 0.0, 0.0, 1.0, 0.0, -3.0]
+[2.0, 1.0, 0.0, 3.0, 1.0, 0.0, 0.0]
+[0.0, 1.0, 0.0, 0.0, 0.0, 1.0, -1.0]
+[0.0, -1.0, -2.0, 0.0, 0.0, 0.0, 0.0]
+benchmarking...
+[1mEpisode 72 - Mean Max Reward: 0.33
+Mean Reward Agent_0: -0.12, Mean Reward Agent_1: -0.12,
+Mean Reward Team 1: -0.12
+Mean Reward Team 2: -0.17
+Mean Total Reward: -0.58, Mean Episode Length 1500.0
+Traceback (most recent call last):
+  File "c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\mappo-competitive-reinforcement\run_soccer_twos_main.py", line 418, in <module>
+    print(trainer.run(6))
+  File "c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\mappo-competitive-reinforcement\run_soccer_twos_main.py", line 394, in run
+    self.save(2)
+  File "c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\mappo-competitive-reinforcement\mappo\mappo_trainer.py", line 194, in save
+    actor_state_dict = agent.actor_critic.actor.state_dict()
+AttributeError: 'Opponent' object has no attribute 'actor_critic'
+[1mEpisode 73 - Mean Max Reward: 0.34
+Mean Reward Agent_0: -0.13, Mean Reward Agent_1: -0.13,
+Mean Reward Team 1: -0.13
+Mean Reward Team 2: -0.15

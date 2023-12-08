@@ -1,0 +1,18 @@
+
+[INFO] Connected to Unity environment with package version 2.1.0-exp.1 and communication version 1.5.0
+INFO:mlagents_envs.environment:Connected to Unity environment with package version 2.1.0-exp.1 and communication version 1.5.0
+Traceback (most recent call last):
+  File "c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\mappo-competitive-reinforcement\run_soccer_twos_main.py", line 416, in <module>
+    env, num_agents, state_size, action_size = load_env(os.getcwd())
+  File "c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\mappo-competitive-reinforcement\run_soccer_twos_main.py", line 37, in load_env
+    env = soccer_twos.make(render=True, termination_mode="ALL", time_scale=10)
+  File "c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\s2env\lib\site-packages\soccer_twos\__init__.py", line 107, in make
+    env = MultiAgentUnityWrapper(unity_env, **multiagent_config)
+  File "c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\s2env\lib\site-packages\soccer_twos\wrappers.py", line 73, in __init__
+    self._env.step()
+  File "c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\s2env\lib\site-packages\mlagents_envs\timers.py", line 305, in wrapped
+    return func(*args, **kwargs)
+  File "c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\s2env\lib\site-packages\mlagents_envs\environment.py", line 319, in step
+    return self.reset()
+  File "c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\s2env\lib\site-packages\mlagents_envs\environment.py", line 307, in reset
+    raise UnityCommunicatorStoppedException("Communicator has exited.")

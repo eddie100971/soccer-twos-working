@@ -1,0 +1,47 @@
+[INFO] Connected to Unity environment with package version 2.1.0-exp.1 and communication version 1.5.0
+[INFO] Connected new brain: SoccerTwos?team=1
+[INFO] Connected new brain: SoccerTwos?team=0
+Number of Agents: 4, State Size: 336, Action Size: 3
+INFO:mlagents_envs.environment:Connected to Unity environment with package version 2.1.0-exp.1 and communication version 1.5.0
+INFO:mlagents_envs.environment:Connected new brain: SoccerTwos?team=1
+INFO:mlagents_envs.environment:Connected new brain: SoccerTwos?team=0
+Rollout 1/35 Time:  8.566059350967407
+[1mEpisode 2 - Mean Max Reward: 0.22
+Mean Reward Agent_0: 0.22, Mean Reward Agent_1: 0.22,
+Mean Reward Team 1: 0.22
+Mean Reward Team 2: -0.50
+Mean Total Reward: -0.57, Mean Episode Length 1500.0
+[1mEpisode 3 - Mean Max Reward: 0.14
+Mean Reward Agent_0: 0.14, Mean Reward Agent_1: 0.14,
+Mean Reward Team 1: 0.14
+Mean Reward Team 2: -0.33
+Mean Total Reward: -0.38, Mean Episode Length 1500.0
+Udating Utility Table
+Epoch: 1
+Rollout 2/35 Time:  9.900176525115967
+Rollout 3/35 Time:  8.241316080093384
+c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\mappo-competitive-reinforcement\mappo\ppo_model.py:44: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  action_mu, action_sigma = self.actor(torch.tensor(state))
+c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\mappo-competitive-reinforcement\mappo\ppo_model.py:51: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  return torch.tensor(action), log_prob
+Rollout 4/35 Time:  9.819829940795898
+[0.0, 0.0]
+[0.0, 0.0]
+benchmarking...
+[1mEpisode 7 - Mean Max Reward: 0.06
+Mean Reward Agent_0: 0.06, Mean Reward Agent_1: 0.06,
+Mean Reward Team 1: 0.06
+Mean Reward Team 2: -0.14
+Mean Total Reward: -0.16, Mean Episode Length 1500.0
+Traceback (most recent call last):
+  File "c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\mappo-competitive-reinforcement\run_soccer_twos_main.py", line 418, in <module>
+    print(trainer.run(1))
+  File "c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\mappo-competitive-reinforcement\run_soccer_twos_main.py", line 394, in run
+    self.save(2)
+  File "c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\mappo-competitive-reinforcement\mappo\mappo_trainer.py", line 195, in save
+    actor_state_dict = agent.state_dict()
+AttributeError: 'Opponent' object has no attribute 'state_dict'
+[1mEpisode 8 - Mean Max Reward: 0.05
+Mean Reward Agent_0: 0.05, Mean Reward Agent_1: 0.05,
+Mean Reward Team 1: 0.05
+Mean Reward Team 2: -0.12

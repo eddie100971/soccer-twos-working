@@ -13,6 +13,8 @@ import sys
 import os
 import wandb
 
+from time import time
+
 device = torch.device('cpu')
 #'cuda:0' if torch.cuda.is_available() else 
 
@@ -48,8 +50,10 @@ def load_env(env_loc):
     return env, num_agents, state_size, action_size
 
 def create_opponent(state_size, action_size, actor_fc1_units=512,
-                 actor_fc2_units=256, agent_ix=None, epoch=None):
-    if epoch is not None:
+                 actor_fc2_units=256, agent_ix=None, epoch=None, benchmark=False):
+    if benchmark:
+        path = rf"C:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\saved_files\actor_agent_{agent_ix}_episode_8500.pth"
+    elif epoch is not None:
         path = os.path.join(os.getcwd(), "saved_files", f"actor_agent_{agent_ix}_episode_{epoch}.pth") 
     else:
         path = None
@@ -294,7 +298,21 @@ class PSRO(MAPPOTrainer):
         self.agent_args = (336, 3)
         self.rollout_length = 100
 
-        self.benchmark = (create_opponent(state_size, action_size, epoch=8500, agent_ix=i) for i in range(2,4))
+        self.benchmark_opponents = (create_opponent(state_size, action_size, epoch=8500, agent_ix=0, benchmark = True), create_opponent(state_size, action_size, epoch=8500, agent_ix=1, benchmark=True))
+
+        self.rollouts = 0
+
+    def run_eval(self, episodes):
+        self.agents = (create_opponent(state_size, action_size, epoch=8500, agent_ix=0), create_opponent(state_size, action_size, epoch=8500, agent_ix=1))
+        self.opponents = self.benchmark_opponents
+        utility = 0
+        for _ in range(episodes):
+            util = self.step(train_agents=False)
+            wandb.log({"Team Utility (per episode)": util}, _)
+            utility += util 
+
+        print("avg utility: ", utility / episodes)
+        
 
 
 
@@ -305,17 +323,37 @@ class PSRO(MAPPOTrainer):
         Returns:
             utility: average utility of each episode
         """
-        
+        timex = time()
         # Initialize list to hold reward values at each timestep.
         utility = 0
 
         for _ in range(self.rollout_length):
-            utility += self.step()
+            utility += self.step(train_agents=False)
+        
+        self.rollouts += 1
+        print(f"Rollout {self.rollouts}/{49} Time: ", time() - timex )
         
         return utility / self.rollout_length
     
-    def run(self, epochs):
+    def benchmark(self):
+            print("benchmarking...")
+            #benchmarking current populations
+            self.opponents = self.benchmark_opponents
+            nash = Game(np.array([np.array(self.utilities[j]) for j in range(len(self.utilities))])).support_enumeration().__next__()
+            dis = (torch.distributions.Categorical(torch.tensor(nash[0])), torch.distributions.Categorical(torch.tensor(nash[1])))\
+            
+            for _ in range(self.rollout_length):
+                self.agents = self.population1[dis[0].sample()]
+                self.step(train_agents=False)
+                self.print_status(benchmark=True, team=1)
 
+                self.agents = self.population2[dis[1].sample()]
+                self.step(train_agents=False)
+                self.print_status(benchmark=True, team=2)
+
+    
+    def run(self, epochs):
+        
         for i in range(len(self.population1)):
             self.agents = self.population1[i]
             for j in range(len(self.population2)):
@@ -346,7 +384,7 @@ class PSRO(MAPPOTrainer):
                 population.append(self.agents)
                 self.print_status()
 
-            print("Udating Utilit Table")
+            print("Udating Utility Table")
             print("Epoch:", _+1)
             ## Update Utility Table
             for i in range(len(self.population1)):
@@ -361,21 +399,15 @@ class PSRO(MAPPOTrainer):
             for i in self.utilities:
                 print(i)
 
-            #benchmarking current populations
-            nash = Game(np.array([np.array(self.utilities[j]) for j in range(len(self.utilities))])).support_enumeration().__next__()
-            dis = (torch.distributions.Categorical(torch.tensor(nash[0])), torch.distributions.Categorical(torch.tensor(nash[1])))
-            self.agents = self.population1[dis[0].sample()]
-            self.opponents = self.benchmark
-            benchmark1 = self.rollout()
-            self.print_status(benchmark=True, team=1)
+            self.benchmark()
 
-            self.agents = self.population2[dis[1].sample()]
-            self.opponents = self.benchmark
-            benchmark2 = self.rollout(benchmark=True, team=2)
-
-
-
+        for i,j in zip(self.population1, self.population2):
+            self.agents = i
+            self.save()
+            self.agents = j
+            self.save(2)
         return Game(np.array([np.array(self.utilities[i]) for i in range(len(self.utilities))])).support_enumeration().__next__()
+
 
 
 
@@ -387,7 +419,6 @@ if __name__ == '__main__':
 
     # Initialize environment, extract state/action dimensions and num agents.
     env, num_agents, state_size, action_size = load_env(os.getcwd())
-    print(state_size, action_size)
     # Initialize agents for training.
     #agents = [create_agent(state_size, action_size, agent_ix=_) for _ in range(num_agents)]
     #opponents = [create_opponent(state_size, action_size, epoch=None, agent_ix=i) for i in range(num_agents)]
@@ -395,10 +426,18 @@ if __name__ == '__main__':
     opponents = [create_opponent(state_size, action_size, epoch=None, agent_ix=i) for i in range(2,4)]
     # Create MAPPOTrainer object to train agents.
     save_dir = os.path.join(os.getcwd(), r'saved_files')
-    trainer = create_trainer(env, agents, opponents, save_dir, state_size, action_size, use_PSRO=False)
+    trainer = create_trainer(env, agents, opponents, save_dir, state_size, action_size, use_PSRO=True, update_frequency=1500)
+
+    trainer.run_eval(100)
 
     # Train agent in specified environment.
-    train_agents_sp(env, trainer, n_episodes=100)
-    #print(trainer.run(6))
-    print("Finished Training")
+    # train_agents_sp(env, trainer, n_episodes=100)
+    # print(trainer.run(6))
+    """
+    NE's for PSRO with 6 epochs and 100 episodes per rollout: (array([0.24799487, 0.        , 0.04234841, 0.        , 0.08982996,
+       0.61982676, 0.        ]), array([0.        , 0.        , 0.        , 0.02743022, 0.11982676,
+       0.82290664, 0.02983638]))
+    """
+
+    # print("Finished Training")
     
