@@ -432,7 +432,7 @@ if __name__ == '__main__':
 
     # Train agent in specified environment.
     # train_agents_sp(env, trainer, n_episodes=100)
-    print(trainer.run(2))
+    print(trainer.run(7))
     """
     NE's for PSRO with 6 epochs and 100 episodes per rollout: (array([0.24799487, 0.        , 0.04234841, 0.        , 0.08982996,
        0.61982676, 0.        ]), array([0.        , 0.        , 0.        , 0.02743022, 0.11982676,
