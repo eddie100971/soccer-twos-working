@@ -234,7 +234,7 @@ class PPOAgent:
                 )
                 variance_total += variance.item()
                 policy_total += policy_loss.item()
-        print("Trying to log variance and policyloss")
+        # print("Trying to log variance and policyloss")
         data = {f"Agent {agent_num} Variance":variance_total/total_calls, f"Agent {agent_num} Policy_Loss":policy_total/total_calls}       
         wandb.log(data, curr_timestep)
         
