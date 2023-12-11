@@ -1,0 +1,56 @@
+2023-12-06 00:42:01,305 INFO    StreamThr :3912 [internal.py:wandb_internal():86] W&B internal server running at pid: 3912, started at: 2023-12-06 00:42:01.305326
+2023-12-06 00:42:01,322 DEBUG   HandlerThread:3912 [handler.py:handle_request():146] handle_request: status
+2023-12-06 00:42:01,322 INFO    WriterThread:3912 [datastore.py:open_for_write():85] open: C:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\wandb\run-20231206_004201-milp2m5b\run-milp2m5b.wandb
+2023-12-06 00:42:01,322 DEBUG   SenderThread:3912 [sender.py:send():380] send: header
+2023-12-06 00:42:01,372 DEBUG   SenderThread:3912 [sender.py:send():380] send: run
+2023-12-06 00:42:01,681 INFO    SenderThread:3912 [dir_watcher.py:__init__():211] watching files in: C:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\wandb\run-20231206_004201-milp2m5b\files
+2023-12-06 00:42:01,681 INFO    SenderThread:3912 [sender.py:_start_run_threads():1124] run started: milp2m5b with start time 1701852121.321418
+2023-12-06 00:42:01,696 DEBUG   HandlerThread:3912 [handler.py:handle_request():146] handle_request: check_version
+2023-12-06 00:42:01,696 DEBUG   SenderThread:3912 [sender.py:send_request():407] send_request: check_version
+2023-12-06 00:42:01,789 DEBUG   HandlerThread:3912 [handler.py:handle_request():146] handle_request: run_start
+2023-12-06 00:42:01,804 DEBUG   HandlerThread:3912 [system_info.py:__init__():32] System info init
+2023-12-06 00:42:01,804 DEBUG   HandlerThread:3912 [system_info.py:__init__():47] System info init done
+2023-12-06 00:42:01,804 INFO    HandlerThread:3912 [system_monitor.py:start():194] Starting system monitor
+2023-12-06 00:42:01,804 INFO    SystemMonitor:3912 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2023-12-06 00:42:01,804 INFO    HandlerThread:3912 [system_monitor.py:probe():214] Collecting system info
+2023-12-06 00:42:01,820 INFO    SystemMonitor:3912 [interfaces.py:start():190] Started cpu monitoring
+2023-12-06 00:42:01,820 DEBUG   HandlerThread:3912 [system_info.py:probe():196] Probing system
+2023-12-06 00:42:01,820 INFO    SystemMonitor:3912 [interfaces.py:start():190] Started disk monitoring
+2023-12-06 00:42:01,820 INFO    SystemMonitor:3912 [interfaces.py:start():190] Started memory monitoring
+2023-12-06 00:42:01,836 INFO    SystemMonitor:3912 [interfaces.py:start():190] Started network monitoring
+2023-12-06 00:42:01,836 DEBUG   HandlerThread:3912 [system_info.py:_probe_git():181] Probing git
+2023-12-06 00:42:01,915 DEBUG   HandlerThread:3912 [system_info.py:_probe_git():189] Probing git done
+2023-12-06 00:42:01,915 DEBUG   HandlerThread:3912 [system_info.py:probe():244] Probing system done
+2023-12-06 00:42:01,915 DEBUG   HandlerThread:3912 [system_monitor.py:probe():223] {'os': 'Windows-10-10.0.19044-SP0', 'python': '3.10.0', 'heartbeatAt': '2023-12-06T08:42:01.820605', 'startedAt': '2023-12-06T08:42:01.295256', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': 'c:\\Users\\nmone\\OneDrive\\Desktop\\CS\\soccer-twos-working\\mappo-competitive-reinforcement\\run_soccer_twos_main.py', 'codePathLocal': 'mappo-competitive-reinforcement\\run_soccer_twos_main.py', 'codePath': 'mappo-competitive-reinforcement\\run_soccer_twos_main.py', 'git': {'remote': 'https://github.com/eddie100971/soccer-twos-working.git', 'commit': 'e6183d921934229bcced1ef7f53b81ee6c9706e7'}, 'email': None, 'root': 'C:/Users/nmone/OneDrive/Desktop/CS/soccer-twos-working', 'host': 'DESKTOP-1M29CGK', 'username': 'nmone', 'executable': 'c:\\Users\\nmone\\OneDrive\\Desktop\\CS\\soccer-twos-working\\s2env\\Scripts\\python.exe', 'cpu_count': 4, 'cpu_count_logical': 8, 'cpu_freq': {'current': 1700.0, 'min': 0.0, 'max': 2001.0}, 'cpu_freq_per_core': [{'current': 1700.0, 'min': 0.0, 'max': 2001.0}], 'disk': {'/': {'total': 51.446285247802734, 'used': 40.13551330566406}}, 'memory': {'total': 15.807231903076172}}
+2023-12-06 00:42:01,915 INFO    HandlerThread:3912 [system_monitor.py:probe():224] Finished collecting system info
+2023-12-06 00:42:01,915 INFO    HandlerThread:3912 [system_monitor.py:probe():227] Publishing system info
+2023-12-06 00:42:01,915 DEBUG   HandlerThread:3912 [system_info.py:_save_pip():52] Saving list of pip packages installed into the current environment
+2023-12-06 00:42:01,915 DEBUG   HandlerThread:3912 [system_info.py:_save_pip():68] Saving pip packages done
+2023-12-06 00:42:01,915 INFO    HandlerThread:3912 [system_monitor.py:probe():229] Finished publishing system info
+2023-12-06 00:42:01,931 DEBUG   SenderThread:3912 [sender.py:send():380] send: files
+2023-12-06 00:42:01,931 INFO    SenderThread:3912 [sender.py:_save_file():1380] saving file wandb-metadata.json with policy now
+2023-12-06 00:42:01,957 DEBUG   HandlerThread:3912 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-06 00:42:01,958 DEBUG   SenderThread:3912 [sender.py:send_request():407] send_request: stop_status
+2023-12-06 00:42:01,960 DEBUG   HandlerThread:3912 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-06 00:42:02,150 DEBUG   SenderThread:3912 [sender.py:send():380] send: telemetry
+2023-12-06 00:42:02,370 INFO    wandb-upload_0:3912 [upload_job.py:push():131] Uploaded file C:\Users\nmone\AppData\Local\Temp\tmpgy279rd7wandb\gbb83zp2-wandb-metadata.json
+2023-12-06 00:42:02,684 INFO    Thread-16 :3912 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\wandb\run-20231206_004201-milp2m5b\files\wandb-metadata.json
+2023-12-06 00:42:02,685 INFO    Thread-16 :3912 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\wandb\run-20231206_004201-milp2m5b\files\requirements.txt
+2023-12-06 00:42:06,684 INFO    Thread-16 :3912 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\wandb\run-20231206_004201-milp2m5b\files\output.log
+2023-12-06 00:42:06,742 DEBUG   HandlerThread:3912 [handler.py:handle_request():146] handle_request: status_report
+2023-12-06 00:42:08,686 INFO    Thread-16 :3912 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\wandb\run-20231206_004201-milp2m5b\files\output.log
+2023-12-06 00:42:11,748 DEBUG   HandlerThread:3912 [handler.py:handle_request():146] handle_request: status_report
+2023-12-06 00:42:16,558 DEBUG   HandlerThread:3912 [handler.py:handle_request():146] handle_request: partial_history
+2023-12-06 00:42:16,959 DEBUG   HandlerThread:3912 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-06 00:42:16,960 DEBUG   HandlerThread:3912 [handler.py:handle_request():146] handle_request: status_report
+2023-12-06 00:42:16,960 DEBUG   SenderThread:3912 [sender.py:send_request():407] send_request: stop_status
+2023-12-06 00:42:16,964 DEBUG   HandlerThread:3912 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-06 00:42:18,696 INFO    Thread-16 :3912 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\wandb\run-20231206_004201-milp2m5b\files\output.log
+2023-12-06 00:42:22,137 DEBUG   HandlerThread:3912 [handler.py:handle_request():146] handle_request: status_report
+2023-12-06 00:42:27,140 DEBUG   HandlerThread:3912 [handler.py:handle_request():146] handle_request: status_report
+2023-12-06 00:42:31,949 DEBUG   HandlerThread:3912 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-06 00:42:31,950 DEBUG   SenderThread:3912 [sender.py:send_request():407] send_request: stop_status
+2023-12-06 00:42:31,953 DEBUG   HandlerThread:3912 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-06 00:42:33,105 DEBUG   HandlerThread:3912 [handler.py:handle_request():146] handle_request: status_report
+2023-12-06 00:42:33,711 INFO    Thread-16 :3912 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\wandb\run-20231206_004201-milp2m5b\files\config.yaml
+2023-12-06 00:42:38,236 DEBUG   HandlerThread:3912 [handler.py:handle_request():146] handle_request: status_report

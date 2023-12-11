@@ -1,0 +1,30 @@
+INFO:mlagents_envs.environment:Connected to Unity environment with package version 2.1.0-exp.1 and communication version 1.5.0
+INFO:mlagents_envs.environment:Connected new brain: SoccerTwos?team=1
+INFO:mlagents_envs.environment:Connected new brain: SoccerTwos?team=0
+c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\mappo-competitive-reinforcement\mappo\ppo_model.py:44: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  action_mu, action_sigma = self.actor(torch.tensor(state))
+c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\mappo-competitive-reinforcement\mappo\ppo_model.py:51: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  return torch.tensor(action), log_prob
+[INFO] Connected to Unity environment with package version 2.1.0-exp.1 and communication version 1.5.0
+[INFO] Connected new brain: SoccerTwos?team=1
+[INFO] Connected new brain: SoccerTwos?team=0
+Number of Agents: 4, State Size: 336, Action Size: 3
+Traceback (most recent call last):
+  File "c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\mappo-competitive-reinforcement\run_soccer_twos_main.py", line 424, in <module>
+    trainer.run_eval(100)
+  File "c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\mappo-competitive-reinforcement\run_soccer_twos_main.py", line 307, in run_eval
+    self.step(train_agents=False)
+  File "c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\mappo-competitive-reinforcement\mappo\mappo_trainer.py", line 175, in step
+    scores, utility = self.run_episode(train_agents=train_agents)
+  File "c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\mappo-competitive-reinforcement\mappo\mappo_trainer.py", line 145, in run_episode
+    states, rewards, dones, info = self.step_env(raw_actions)
+  File "c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\mappo-competitive-reinforcement\mappo\mappo_trainer.py", line 79, in step_env
+    obs, rewards, done, info = self.env.step(actions_to_take)
+  File "c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\s2env\lib\site-packages\gym\core.py", line 248, in step
+    return self.env.step(action)
+  File "c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\s2env\lib\site-packages\soccer_twos\wrappers.py", line 238, in step
+    self._env.step()
+  File "c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\s2env\lib\site-packages\mlagents_envs\timers.py", line 305, in wrapped
+    return func(*args, **kwargs)
+  File "c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\s2env\lib\site-packages\mlagents_envs\environment.py", line 335, in step
+    raise UnityCommunicatorStoppedException("Communicator has exited.")

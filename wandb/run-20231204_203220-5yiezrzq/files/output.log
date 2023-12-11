@@ -1,0 +1,30 @@
+[INFO] Connected to Unity environment with package version 2.1.0-exp.1 and communication version 1.5.0
+[INFO] Connected new brain: SoccerTwos?team=1
+[INFO] Connected new brain: SoccerTwos?team=0
+Number of Agents: 4, State Size: 336, Action Size: 3
+INFO:mlagents_envs.environment:Connected to Unity environment with package version 2.1.0-exp.1 and communication version 1.5.0
+INFO:mlagents_envs.environment:Connected new brain: SoccerTwos?team=1
+INFO:mlagents_envs.environment:Connected new brain: SoccerTwos?team=0
+Rollout 1/45 Time:  800.4338059425354
+[1mEpisode 200 - Mean Max Reward: 0.09
+Mean Reward Agent_0: -0.03, Mean Reward Agent_1: -0.03,
+Mean Reward Team 1: -0.03
+Mean Reward Team 2: -0.09
+Mean Total Reward: -0.24, Mean Episode Length 1500.0
+[1mEpisode 300 - Mean Max Reward: 0.27
+Mean Reward Agent_0: -0.11, Mean Reward Agent_1: -0.11,
+Mean Reward Team 1: -0.11
+Mean Reward Team 2: -0.18
+Mean Total Reward: -0.59, Mean Episode Length 1500.0
+Udating Utility Table
+Epoch: 1
+Rollout 2/45 Time:  1033.557400226593
+Rollout 3/45 Time:  842.8574032783508
+Traceback (most recent call last):
+  File "c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\mappo-competitive-reinforcement\run_soccer_twos_main.py", line 418, in <module>
+    print(trainer.run(6))
+  File "c:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\mappo-competitive-reinforcement\run_soccer_twos_main.py", line 388, in run
+    self.benchmark()
+TypeError: 'generator' object is not callable
+Rollout 4/45 Time:  1023.4229505062103
+[0.04, 0.05]

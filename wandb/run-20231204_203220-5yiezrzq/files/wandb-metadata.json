@@ -1,0 +1,45 @@
+{
+    "os": "Windows-10-10.0.19044-SP0",
+    "python": "3.10.0",
+    "heartbeatAt": "2023-12-05T04:32:20.690127",
+    "startedAt": "2023-12-05T04:32:20.087947",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "c:\\Users\\nmone\\OneDrive\\Desktop\\CS\\soccer-twos-working\\mappo-competitive-reinforcement\\run_soccer_twos_main.py",
+    "codePathLocal": "mappo-competitive-reinforcement\\run_soccer_twos_main.py",
+    "codePath": "mappo-competitive-reinforcement\\run_soccer_twos_main.py",
+    "git": {
+        "remote": "https://github.com/eddie100971/soccer-twos-working.git",
+        "commit": "e6183d921934229bcced1ef7f53b81ee6c9706e7"
+    },
+    "email": null,
+    "root": "C:/Users/nmone/OneDrive/Desktop/CS/soccer-twos-working",
+    "host": "DESKTOP-1M29CGK",
+    "username": "nmone",
+    "executable": "c:\\Users\\nmone\\OneDrive\\Desktop\\CS\\soccer-twos-working\\s2env\\Scripts\\python.exe",
+    "cpu_count": 4,
+    "cpu_count_logical": 8,
+    "cpu_freq": {
+        "current": 2000.0,
+        "min": 0.0,
+        "max": 2001.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2000.0,
+            "min": 0.0,
+            "max": 2001.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 51.446285247802734,
+            "used": 41.51044464111328
+        }
+    },
+    "memory": {
+        "total": 15.807231903076172
+    }
+}

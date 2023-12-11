@@ -84,7 +84,7 @@ class MAPPOTrainer:
         # Evaluate if episode has finished.
         return states, rewards, done, info
 
-    def run_episode(self):
+    def run_episode(self, train_agents=True):
         """
         Runs a single episode in the training process for max_episode_length
         timesteps.
@@ -139,30 +139,32 @@ class MAPPOTrainer:
                             utilities -= 1
                         goal_check = True
 
-                if goal_check:
-                    print(f'Team {team} scored a GOAL!, Reset Env\n')
+                # if goal_check:
+                #     print(f'Team {team} scored a GOAL!, Reset Env\n')
 
             states, rewards, dones, info = self.step_env(raw_actions)
 
-            # Add experience to the memories for each agent.
-            for agent, state, action, log_prob, reward in \
+            
+
+            if train_agents:
+                # Add experience to the memories for each agent.
+                for agent, state, action, log_prob, reward in \
                     zip(self.agents, processed_states, actions, log_probs,
                         rewards):
-                if (t+1 == self.max_episode_length): # last episode reached
-                    agent.add_memory(state, action, log_prob, reward, True)
-                else:
-                    agent.add_memory(state, action, log_prob, reward, False)
-
-            # Initiate learning for agent if update frequency is observed.
-            if self.timestep % self.update_frequency == 0:
-                for agent_num, agent in enumerate(self.agents):
-                    agent.update(agent_num, self.timestep)
+                    if (t+1 == self.max_episode_length): # last episode reached
+                        agent.add_memory(state, action, log_prob, reward, True)
+                    else:
+                        agent.add_memory(state, action, log_prob, reward, False)
+                # Initiate learning for agent if update frequency is observed.
+                if self.timestep % self.update_frequency == 0:
+                    for agent_num, agent in enumerate(self.agents):
+                        agent.update(agent_num, self.timestep)
 
             # Append reward gained for each new action.
             scores.append(rewards)    
         return scores, utilities
 
-    def step(self):
+    def step(self, train_agents=True):
         """
         Initiates run of an episode and logs the resulting total rewards and
         episode lengths.
@@ -170,7 +172,7 @@ class MAPPOTrainer:
 
         # Run a single episode in environment.
         self.i_episode += 1
-        scores, utility = self.run_episode()
+        scores, utility = self.run_episode(train_agents=train_agents)
 
         # Sum the episode rewards for each agent to get the total rewards.
         score_by_agent = np.sum(scores, axis=0)
@@ -180,7 +182,7 @@ class MAPPOTrainer:
         self.episode_length_history.append(len(scores))
         return utility
 
-    def save(self):
+    def save(self, agent_offset=0):
         """
         Saves actor_critic for both agents once successful score is achieved.
         """
@@ -188,14 +190,15 @@ class MAPPOTrainer:
         # Save actor_critic for each agent in specified save location.
         for agent_ix in range(len(self.agents)):
             agent = self.agents[agent_ix]
-            filename = f'agent_{agent_ix}_episode_{self.i_episode}.pth'
-            actor_state_dict = agent.actor_critic.actor.state_dict()
-            torch.save(actor_state_dict, os.path.join(self.save_dir, "actor_" + filename))
-            critic_state_dict = agent.actor_critic.actor.state_dict()
-            torch.save(critic_state_dict, os.path.join(self.save_dir, "critic_" + filename))
+            filename = f'agent_{agent_ix+agent_offset}_episode_{self.i_episode}.pth'
+            if not isinstance(agent, Opponent):
+                actor_state_dict = agent.actor_critic.actor.state_dict()
+                torch.save(actor_state_dict, os.path.join(self.save_dir, "actor_" + filename))
+                critic_state_dict = agent.actor_critic.actor.state_dict()
+                torch.save(critic_state_dict, os.path.join(self.save_dir, "critic_" + filename))
 
 
-    def print_status(self):
+    def print_status(self, benchmark=False, team=None):
         """Prints reward info and episode length stats at current episode."""
 
         # Calculate necessary statistics.
@@ -223,8 +226,15 @@ class MAPPOTrainer:
             f'Mean Total Reward: {mean_reward.sum():.2f}, '
             f'Mean Episode Length {mean_eps_len:.1f}\n'
         )
-        save_data = {"Mean-Max Reward": float(max_mean)}
+        if(benchmark):
+            save_data = {f"Team {team} Mean-Max Reward (Benchmark)": float(max_mean)}
+        else:
+            save_data = {"Mean-Max Reward": float(max_mean)}
         wandb.log(save_data, self.timestep)
+
+        # save_data = {"Mean-Max Reward": max_mean, "Episode": self.i_episode}
+        # with open((r"C:\dev\soccer-twos-working\saved_files\run_data.json"), "a") as f:
+        #     json.dump(save_data, f)
 
     def plot(self):
         """
@@ -254,7 +264,6 @@ class MAPPOTrainer:
         filename = f'scores_{self.i_episode}'
         fig.savefig(os.path.join(self.save_dir, filename))
         plt.show()
-
 
 
         

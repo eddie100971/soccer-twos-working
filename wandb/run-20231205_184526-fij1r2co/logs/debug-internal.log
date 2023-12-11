@@ -1,0 +1,56 @@
+2023-12-05 18:45:26,865 INFO    StreamThr :5328 [internal.py:wandb_internal():86] W&B internal server running at pid: 5328, started at: 2023-12-05 18:45:26.863317
+2023-12-05 18:45:26,870 DEBUG   HandlerThread:5328 [handler.py:handle_request():146] handle_request: status
+2023-12-05 18:45:26,875 INFO    WriterThread:5328 [datastore.py:open_for_write():85] open: C:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\wandb\run-20231205_184526-fij1r2co\run-fij1r2co.wandb
+2023-12-05 18:45:26,877 DEBUG   SenderThread:5328 [sender.py:send():380] send: header
+2023-12-05 18:45:26,940 DEBUG   SenderThread:5328 [sender.py:send():380] send: run
+2023-12-05 18:45:27,394 INFO    SenderThread:5328 [dir_watcher.py:__init__():211] watching files in: C:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\wandb\run-20231205_184526-fij1r2co\files
+2023-12-05 18:45:27,394 INFO    SenderThread:5328 [sender.py:_start_run_threads():1124] run started: fij1r2co with start time 1701830726.86631
+2023-12-05 18:45:27,409 DEBUG   HandlerThread:5328 [handler.py:handle_request():146] handle_request: check_version
+2023-12-05 18:45:27,410 DEBUG   SenderThread:5328 [sender.py:send_request():407] send_request: check_version
+2023-12-05 18:45:27,962 DEBUG   HandlerThread:5328 [handler.py:handle_request():146] handle_request: run_start
+2023-12-05 18:45:27,977 DEBUG   HandlerThread:5328 [system_info.py:__init__():32] System info init
+2023-12-05 18:45:27,977 DEBUG   HandlerThread:5328 [system_info.py:__init__():47] System info init done
+2023-12-05 18:45:27,977 INFO    HandlerThread:5328 [system_monitor.py:start():194] Starting system monitor
+2023-12-05 18:45:27,978 INFO    SystemMonitor:5328 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2023-12-05 18:45:27,978 INFO    HandlerThread:5328 [system_monitor.py:probe():214] Collecting system info
+2023-12-05 18:45:27,986 DEBUG   HandlerThread:5328 [system_info.py:probe():196] Probing system
+2023-12-05 18:45:27,986 INFO    SystemMonitor:5328 [interfaces.py:start():190] Started cpu monitoring
+2023-12-05 18:45:27,987 INFO    SystemMonitor:5328 [interfaces.py:start():190] Started disk monitoring
+2023-12-05 18:45:27,994 INFO    SystemMonitor:5328 [interfaces.py:start():190] Started memory monitoring
+2023-12-05 18:45:28,003 INFO    SystemMonitor:5328 [interfaces.py:start():190] Started network monitoring
+2023-12-05 18:45:28,004 DEBUG   HandlerThread:5328 [system_info.py:_probe_git():181] Probing git
+2023-12-05 18:45:28,111 DEBUG   HandlerThread:5328 [system_info.py:_probe_git():189] Probing git done
+2023-12-05 18:45:28,111 DEBUG   HandlerThread:5328 [system_info.py:probe():244] Probing system done
+2023-12-05 18:45:28,111 DEBUG   HandlerThread:5328 [system_monitor.py:probe():223] {'os': 'Windows-10-10.0.19044-SP0', 'python': '3.10.0', 'heartbeatAt': '2023-12-06T02:45:27.986279', 'startedAt': '2023-12-06T02:45:26.850359', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': 'c:\\Users\\nmone\\OneDrive\\Desktop\\CS\\soccer-twos-working\\mappo-competitive-reinforcement\\run_soccer_twos_main.py', 'codePathLocal': 'mappo-competitive-reinforcement\\run_soccer_twos_main.py', 'codePath': 'mappo-competitive-reinforcement\\run_soccer_twos_main.py', 'git': {'remote': 'https://github.com/eddie100971/soccer-twos-working.git', 'commit': 'e6183d921934229bcced1ef7f53b81ee6c9706e7'}, 'email': None, 'root': 'C:/Users/nmone/OneDrive/Desktop/CS/soccer-twos-working', 'host': 'DESKTOP-1M29CGK', 'username': 'nmone', 'executable': 'c:\\Users\\nmone\\OneDrive\\Desktop\\CS\\soccer-twos-working\\s2env\\Scripts\\python.exe', 'cpu_count': 4, 'cpu_count_logical': 8, 'cpu_freq': {'current': 1900.0, 'min': 0.0, 'max': 2001.0}, 'cpu_freq_per_core': [{'current': 1900.0, 'min': 0.0, 'max': 2001.0}], 'disk': {'/': {'total': 51.446285247802734, 'used': 40.87221908569336}}, 'memory': {'total': 15.807231903076172}}
+2023-12-05 18:45:28,111 INFO    HandlerThread:5328 [system_monitor.py:probe():224] Finished collecting system info
+2023-12-05 18:45:28,111 INFO    HandlerThread:5328 [system_monitor.py:probe():227] Publishing system info
+2023-12-05 18:45:28,111 DEBUG   HandlerThread:5328 [system_info.py:_save_pip():52] Saving list of pip packages installed into the current environment
+2023-12-05 18:45:28,112 DEBUG   HandlerThread:5328 [system_info.py:_save_pip():68] Saving pip packages done
+2023-12-05 18:45:28,113 INFO    HandlerThread:5328 [system_monitor.py:probe():229] Finished publishing system info
+2023-12-05 18:45:28,131 DEBUG   SenderThread:5328 [sender.py:send():380] send: files
+2023-12-05 18:45:28,131 INFO    SenderThread:5328 [sender.py:_save_file():1380] saving file wandb-metadata.json with policy now
+2023-12-05 18:45:28,141 DEBUG   HandlerThread:5328 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-05 18:45:28,141 DEBUG   SenderThread:5328 [sender.py:send_request():407] send_request: stop_status
+2023-12-05 18:45:28,145 DEBUG   HandlerThread:5328 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-05 18:45:28,396 INFO    Thread-16 :5328 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\wandb\run-20231205_184526-fij1r2co\files\requirements.txt
+2023-12-05 18:45:28,396 INFO    Thread-16 :5328 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\wandb\run-20231205_184526-fij1r2co\files\wandb-metadata.json
+2023-12-05 18:45:28,428 DEBUG   SenderThread:5328 [sender.py:send():380] send: telemetry
+2023-12-05 18:45:29,448 INFO    wandb-upload_0:5328 [upload_job.py:push():131] Uploaded file C:\Users\nmone\AppData\Local\Temp\tmpfrr8yeviwandb\6o8pnqu5-wandb-metadata.json
+2023-12-05 18:45:31,396 INFO    Thread-16 :5328 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\wandb\run-20231205_184526-fij1r2co\files\output.log
+2023-12-05 18:45:32,049 DEBUG   HandlerThread:5328 [handler.py:handle_request():146] handle_request: status_report
+2023-12-05 18:45:33,399 INFO    Thread-16 :5328 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\wandb\run-20231205_184526-fij1r2co\files\output.log
+2023-12-05 18:45:37,054 DEBUG   HandlerThread:5328 [handler.py:handle_request():146] handle_request: status_report
+2023-12-05 18:45:42,068 DEBUG   HandlerThread:5328 [handler.py:handle_request():146] handle_request: status_report
+2023-12-05 18:45:43,134 DEBUG   HandlerThread:5328 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-05 18:45:43,135 DEBUG   HandlerThread:5328 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-05 18:45:43,135 DEBUG   SenderThread:5328 [sender.py:send_request():407] send_request: stop_status
+2023-12-05 18:45:47,266 DEBUG   HandlerThread:5328 [handler.py:handle_request():146] handle_request: status_report
+2023-12-05 18:45:52,269 DEBUG   HandlerThread:5328 [handler.py:handle_request():146] handle_request: status_report
+2023-12-05 18:45:57,278 DEBUG   HandlerThread:5328 [handler.py:handle_request():146] handle_request: status_report
+2023-12-05 18:45:57,419 INFO    Thread-16 :5328 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\wandb\run-20231205_184526-fij1r2co\files\config.yaml
+2023-12-05 18:45:58,137 DEBUG   HandlerThread:5328 [handler.py:handle_request():146] handle_request: internal_messages
+2023-12-05 18:45:58,148 DEBUG   HandlerThread:5328 [handler.py:handle_request():146] handle_request: stop_status
+2023-12-05 18:45:58,149 DEBUG   SenderThread:5328 [sender.py:send_request():407] send_request: stop_status
+2023-12-05 18:46:03,262 DEBUG   HandlerThread:5328 [handler.py:handle_request():146] handle_request: status_report
+2023-12-05 18:46:09,156 DEBUG   HandlerThread:5328 [handler.py:handle_request():146] handle_request: status_report
+2023-12-05 18:46:09,431 INFO    Thread-16 :5328 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\nmone\OneDrive\Desktop\CS\soccer-twos-working\wandb\run-20231205_184526-fij1r2co\files\output.log
