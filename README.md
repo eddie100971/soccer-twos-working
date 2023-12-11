@@ -15,16 +15,7 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+These are the steps needed to install and run the training. This may vary from system to system and may need extra installations, terminals, or virtual environments to achieve the best results.
 
 ### Soccer-Twos Installation
 
@@ -49,7 +40,11 @@ cd on-policy
 pip install -e .
 ```
 
-The provided requirement.txt may have redundancy. 
+The provided requirement.txt may have redundancy so install each version as necessary for example:
+
+'''
+pip install python==1.10.0
+'''
 
 ``` Bash
 # install this package first
@@ -60,7 +55,7 @@ pip install seaborn
 
 Run the run_soccer_twos_main.py found under soccer-twos-working\mappo-competitive-reinforcement\run_soccer_twos_main.py
 
-Modify the sample dropout delta, use_sd, use_PSRO elements as needed
+Modify the sd_delta, use_sd, use_PSRO elements as needed
 
 ### MPE Train
 Here we use train_mpe.sh as an example:
@@ -74,40 +69,12 @@ Local results are stored in subfold scripts/results.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+     - [@your_twitter](https://twitter.com/your_username) - email@example.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/eddie100971/soccer-twos-working](https://github.com/eddie100971/soccer-twos-working)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -118,14 +85,10 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 
 Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
 
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
+* [MPE MARL Benchmark On-Policy](https://github.com/marlbenchmark/on-policy )
+* [Soccer-Twos Competitive Reinforcement](https://github.com/terran6/mappo-competitive-reinforcement)
+* [Soccer-Twos Guide](https://github.com/bryanoliveira/soccer-twos-env)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
