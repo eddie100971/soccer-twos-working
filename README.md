@@ -2,14 +2,11 @@
 <a name="readme-top"></a>
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## CS 175: Group 5 Sample Dropout and Variance Reduction in Multi-Agent Environments
 
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 
 
 <!-- GETTING STARTED -->
@@ -65,14 +62,16 @@ chmod +x ./train_mpe.sh
 ./train_mpe.sh
 ```
 Local results are stored in subfold scripts/results.
+Change the .sh file as needed to run the right training.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- CONTACT -->
 ## Contact
-
-     - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Edward Chang
+Nathan Monette
+Einar Gatchalian
 
 Project Link: [https://github.com/eddie100971/soccer-twos-working](https://github.com/eddie100971/soccer-twos-working)
 
